@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TENDENCE Instagram Mirror</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '880279101448547');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=880279101448547&ev=PageView&noscript=1"
+/></noscript>
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+  ttq.load('D691NORC77U6HVGGO320');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Cairo',sans-serif; scroll-behavior:smooth; }
+body{ background:#0d0b09; color:white; overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+
+.hero{
+min-height:100vh; padding:40px 20px;
+background: linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)), url('hero.webp');
+background-size:cover; background-position:center;
+display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden;
+}
+.hero::before{ content:''; position:absolute; width:600px; height:600px; background:#f7c76d; filter:blur(180px); opacity:.15; top:-250px; right:-250px; }
+.container{ width:100%; max-width:1180px; margin:auto; position:relative; z-index:2; }
+.badge{ display:inline-block; background:#f7c76d; color:#1e140a; padding:10px 22px; border-radius:50px; font-weight:800; margin-bottom:20px; font-size:15px; }
+.hero h1{ font-size:68px; line-height:1.15; font-weight:900; color:#f7d28b; text-shadow:0 0 30px rgba(255,215,140,.3); }
+.hero p{ margin-top:25px; font-size:24px; line-height:2; color:#eee; }
+.hero-buttons{ margin-top:35px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
+.btn{ padding:18px 38px; border-radius:50px; font-size:20px; font-weight:800; text-decoration:none; transition:.3s; }
+.btn-primary{ background:linear-gradient(45deg,#f7d28b,#d39b34); color:#1e140a; box-shadow:0 0 30px rgba(255,215,140,.4); }
+.btn-secondary{ border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:white; }
+.btn:hover{ transform:translateY(-4px); }
+.section{ padding:90px 20px; }
+.title{ text-align:center; font-size:48px; font-weight:900; margin-bottom:60px; color:#f7d28b; }
+.products{ display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:35px; }
+.card{ background:#17120e; border-radius:28px; overflow:hidden; border:1px solid rgba(255,255,255,.06); transition:.4s; position:relative; }
+.card:hover{ transform:translateY(-10px); box-shadow:0 0 35px rgba(255,215,140,.18); }
+.card img{ height:420px; object-fit:cover; width:100%; }
+.glow{ position:absolute; inset:0; box-shadow:inset 0 0 40px rgba(255,215,140,.35); pointer-events:none; }
+.card-content{ padding:28px; text-align:center; }
+.card h3{ font-size:36px; color:#f7d28b; margin-bottom:18px; }
+.specs{ line-height:2; font-size:20px; color:#eee; }
+.price{ font-size:48px; font-weight:900; margin-top:22px; }
+.offer{ margin-top:20px; display:inline-block; padding:10px 18px; border-radius:30px; background:#f7d28b; color:#1e140a; font-weight:800; }
+.features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; margin-top:50px; }
+.feature{ background:#17120e; padding:35px; border-radius:25px; text-align:center; }
+.feature h4{ font-size:28px; margin-bottom:15px; color:#f7d28b; }
+.feature p{ line-height:1.9; font-size:18px; color:#ddd; }
+.proof{ background:#14100c; }
+.proof-box{ max-width:900px; margin:auto; background:rgba(255,255,255,.04); padding:45px; border-radius:30px; text-align:center; line-height:2; font-size:24px; border:1px solid rgba(255,255,255,.06); }
+.checkout{ background:#0a0806; }
+form{ max-width:900px; margin:auto; background:#17120e; padding:45px; border-radius:30px; border:1px solid rgba(255,255,255,.06); }
+.form-group{ margin-bottom:20px; }
+input,select,textarea{ width:100%; padding:18px; border:none; border-radius:15px; background:rgba(255,255,255,.06); color:white; font-size:17px; outline:none; }
+option{ color:black; }
+textarea{ min-height:100px; resize:vertical; }
+.warning{ margin-top:25px; padding:25px; border-radius:20px; background:rgba(255,215,140,.08); border:1px solid rgba(255,215,140,.15); line-height:2; font-size:18px; color:#f7d28b; }
+.submit{ width:100%; padding:22px; border:none; border-radius:50px; font-size:24px; font-weight:900; background:linear-gradient(45deg,#f7d28b,#d39b34); color:#1e140a; cursor:pointer; margin-top:25px; }
+.sticky{ position:fixed; bottom:15px; left:15px; right:15px; padding:18px; border-radius:50px; background:linear-gradient(45deg,#f7d28b,#d39b34); color:#1e140a; font-size:22px; font-weight:900; text-align:center; text-decoration:none; z-index:999; box-shadow:0 0 30px rgba(255,215,140,.4); }
+.popup{ position:fixed; left:20px; bottom:95px; background:#17120e; padding:16px 22px; border-radius:18px; border:1px solid rgba(255,255,255,.08); font-size:15px; line-height:1.8; z-index:999; animation:fadeIn .5s ease; max-width:320px; }
+@keyframes fadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+footer{ padding:40px 20px; text-align:center; background:#050403; color:#888; }
+@media(max-width:768px){ .hero h1{font-size:46px;} .hero p{font-size:20px;} .title{font-size:36px;} .card img{height:340px;} }
+</style>
+</head>
+
+<body>
+
+<div class="popup" id="popup">🔥 سليم من وهران طلب المراية الكبيرة بـ 9200DA</div>
+
+<section class="hero">
+<div class="container">
+<div class="badge">🔥 PRODUCT TRENDING IN ALGERIA</div>
+<h1>مراية إنستغرام TENDENCE ✨</h1>
+<p>خلي أي بلاصة عندك تبان Luxury 😍<br>إضاءة LED فخمة + تصميم يخطف العين + ستايل Trending 2025</p>
+<div class="hero-buttons">
+<a href="#checkout" class="btn btn-primary">🛒 أطلب الآن</a>
+<a href="#offers" class="btn btn-secondary">🔥 شوف العروض</a>
+</div>
+</div>
+</section>
+
+<section class="section" id="offers">
+<div class="container">
+<h2 class="title">🔥 العروض المتوفرة حاليا</h2>
+<div class="products">
+
+<div class="card">
+<img src="small.png" alt="Small Mirror" loading="lazy">
+<div class="glow"></div>
+<div class="card-content">
+<h3>المقاس الصغير</h3>
+<div class="specs">
+📏 الطول: 80CM<br>📏 العرض: 40CM<br>✨ مناسب للغرف والديكور العصري
+</div>
+<div class="price">6200 DA</div>
+<div class="offer">🔥 الأكثر طلبا</div>
+</div>
+</div>
+
+<div class="card">
+<img src="big.avif" alt="Big Mirror" loading="lazy">
+<div class="glow"></div>
+<div class="card-content">
+<h3>المقاس الكبير</h3>
+<div class="specs">
+📏 الطول: 120CM<br>📏 العرض: 60CM<br>🔥 يعطي Premium Look للمحل أو الدار
+</div>
+<div class="price">9200 DA</div>
+<div class="offer">✨ LIMITED STOCK</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2 class="title">علاش كامل الناس راهي تحبها؟ 👀</h2>
+<div class="features">
+<div class="feature"><h4>💡 LED Premium</h4><p>إضاءة ناعمة تخلي الصور والديكور يبانوا احترافيين</p></div>
+<div class="feature"><h4>📸 Perfect للصور</h4><p>مثالية للريلز، التيكتوك، والانستغرام</p></div>
+<div class="feature"><h4>🏠 ديكور عصري</h4><p>تعطي لمسة Luxury لأي غرفة أو محل</p></div>
+<div class="feature"><h4>🔥 ترند الجزائر</h4><p>من أكثر المنتجات المطلوبة حاليا</p></div>
+</div>
+</div>
+</section>
+
+<section class="section proof">
+<div class="container">
+<div class="proof-box">
+🔥 أكثر من 130 زبون طلبوها هاذ الشهر 🇩🇿<br><br>
+✅ توصيل لجميع الولايات<br>✅ تغليف آمن ضد الكسر<br>✅ مطابقة للصور 100%<br>✅ دعم سريع عبر Instagram و WhatsApp
+</div>
+</div>
+</section>
+
+<section class="section checkout" id="checkout">
+<div class="container">
+<h2 class="title">🛒 أكمل الطلب تاعك</h2>
+
+<form id="orderForm">
+<div class="form-group">
+<input type="text" id="fname" placeholder="👤 الإسم واللقب" required>
+</div>
+
+<div class="form-group">
+<input type="tel" id="fphone" placeholder="📞 رقم الهاتف" required>
+</div>
+
+<div class="form-group">
+<select id="fproduct" required>
+<option value="">🛒 إختر المنتوج...</option>
+<option value="المقاس الصغير 80x40" data-price="6200">المقاس الصغير - 6200 DA</option>
+<option value="المقاس الكبير 120x60" data-price="9200">المقاس الكبير - 9200 DA</option>
+</select>
+</div>
+
+<div class="form-group">
+<select id="fwilaya" required>
+<option value="">📍 إختر الولاية</option>
+<option>01 Adrar</option><option>02 Chlef</option><option>03 Laghouat</option><option>04 Oum El Bouaghi</option><option>05 Batna</option><option>06 Béjaïa</option><option>07 Biskra</option><option>08 Béchar</option><option>09 Blida</option><option>10 Bouira</option><option>11 Tamanrasset</option><option>12 Tébessa</option><option>13 Tlemcen</option><option>14 Tiaret</option><option>15 Tizi Ouzou</option><option>16 Alger</option><option>17 Djelfa</option><option>18 Jijel</option><option>19 Sétif</option><option>20 Saïda</option><option>21 Skikda</option><option>22 Sidi Bel Abbès</option><option>23 Annaba</option><option>24 Guelma</option><option>25 Constantine</option><option>26 Médéa</option><option>27 Mostaganem</option><option>28 M’Sila</option><option>29 Mascara</option><option>30 Ouargla</option><option>31 Oran</option><option>32 El Bayadh</option><option>33 Illizi</option><option>34 Bordj Bou Arreridj</option><option>35 Boumerdès</option><option>36 El Tarf</option><option>37 Tindouf</option><option>38 Tissemsilt</option><option>39 El Oued</option><option>40 Khenchela</option><option>41 Souk Ahras</option><option>42 Tipaza</option><option>43 Mila</option><option>44 Aïn Defla</option><option>45 Naâma</option><option>46 Aïn Témouchent</option><option>47 Ghardaïa</option><option>48 Relizane</option>
+</select>
+</div>
+
+<div class="form-group">
+<input type="text" id="fbaladiya" placeholder="🏘️ البلدية" required>
+</div>
+
+<div class="form-group">
+<input type="text" id="finstagram" placeholder="📸 Instagram Username أو الرابط">
+</div>
+
+<div class="form-group">
+<textarea id="fnotes" placeholder="📝 ملاحظات إضافية"></textarea>
+</div>
+
+<div class="warning">
+⚠️ مهم قبل تأكيد الطلب:<br><br>
+✅ لازم دفع عربون بين 1000DA و 2000DA باش نبداو نخدمولك الطلبية.<br><br>
+🚚 التوصيل يكون للبureau de livraison فقط بـ 600DA والزبون يروح يستلم المنتج بنفسه.<br><br>
+📦 المنتج يتجهز مباشرة بعد تأكيد العربون لذلك نتمنى غير الناس الجادة تطلب 🙏<br><br>
+❌ الطلبات المزيفة أو الغير مؤكدة ما يتمش معالجتها.
+</div>
+
+<button type="submit" class="submit" id="submitBtn">🔥 تأكيد الطلب الآن</button>
+</form>
+
+</div>
+</section>
+
+<footer>© 2025 TENDENCE Instagram Mirror — Livraison 58 Wilaya 🇩🇿</footer>
+<a href="#checkout" class="sticky">🛒 أطلب الآن قبل نفاذ الكمية</a>
+
+<script>
+// إشعارات المبيعات المزيفة
+const notifications = [
+"🔥 سليم من وهران طلب المراية الكبيرة بـ 9200DA",
+"✨ إيناس من الجزائر طلبت العرض الصغير",
+"📦 يوسف من سطيف أكد الطلب تاعو",
+"🔥 مريم من البليدة طلبت زوج مرايات",
+"📸 Boutique من وهران طلبت المقاس الكبير"
+];
+let i = 0;
+setInterval(() => {
+i++;
+document.getElementById('popup').innerHTML = notifications[i % notifications.length];
+}, 30000);
+
+// كود إرسال الطلب لـ Google Sheets و حساب الـ Pixels
+const scriptURL = 'ضع_هنا_رابط_GOOGLE_APPS_SCRIPT_الخاص_بك'; // ⚠️ حط الرابط نتاعك هنا
+const form = document.getElementById('orderForm');
+const btn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    btn.innerHTML = 'جاري إرسال الطلب... ⏳';
+    
+    // جمع المعلومات من الفورم
+    const name = document.getElementById('fname').value;
+    const phone = document.getElementById('fphone').value;
+    const wilaya = document.getElementById('fwilaya').value;
+    const productSelect = document.getElementById('fproduct');
+    const product = productSelect.value;
+    const price = productSelect.options[productSelect.selectedIndex].getAttribute('data-price');
+    
+    // جمع البلدية والانستغرام والملاحظات في خانة Address باش يفهمها السكريبت تاعك
+    const baladiya = document.getElementById('fbaladiya').value;
+    const instagram = document.getElementById('finstagram').value;
+    const notes = document.getElementById('fnotes').value;
+    const address = `البلدية: ${baladiya} | انستغرام: ${instagram} | ملاحظات: ${notes}`;
+
+    // إرسال الأحداث للبيكسل (Purchase)
+    if(typeof fbq !== 'undefined') {
+        fbq('track', 'Purchase', {currency: "DZD", value: parseFloat(price)});
+    }
+    if(typeof ttq !== 'undefined') {
+        ttq.track('CompletePayment', {
+            contents: [{ content_name: product, price: parseFloat(price), quantity: 1 }],
+            value: parseFloat(price),
+            currency: 'DZD'
+        });
+    }
+
+    // تجهيز الداتا للسكريبت
+    const data = new URLSearchParams();
+    data.append('name', name);
+    data.append('phone', phone);
+    data.append('wilaya', wilaya);
+    data.append('address', address);
+    data.append('product', product);
+    data.append('price', price);
+
+    // بعث الداتا
+    fetch(scriptURL, { method: 'POST', body: data})
+      .then(response => {
+        alert('تم تأكيد طلبك بنجاح! سنتصل بك قريباً.');
+        form.reset();
+        btn.innerHTML = '🔥 تأكيد الطلب الآن';
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert('حدث خطأ، يرجى المحاولة مرة أخرى.');
+        btn.innerHTML = '🔥 تأكيد الطلب الآن';
+      });
+});
+</script>
+
+</body>
+</html>
