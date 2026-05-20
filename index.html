@@ -1,464 +1,124 @@
-import React, { useState, useEffect } from "react";
-import { 
-  ShoppingCart, 
-  CheckCircle, 
-  Truck, 
-  ShieldCheck, 
-  Camera, 
-  Lightbulb, 
-  TrendingUp, 
-  AlertTriangle,
-  Menu,
-  X,
-  ChevronDown,
-  ChevronUp,
-  Instagram,
-  ArrowRight
-} from "lucide-react";
-
-// --- Constants & Mock Data ---
-const ALGERIAN_WILAYAS = [
-  "01 - Adrar", "02 - Chlef", "03 - Laghouat", "04 - Oum El Bouaghi", "05 - Batna", 
-  "06 - Béjaïa", "07 - Biskra", "08 - Béchar", "09 - Blida", "10 - Bouira", 
-  "11 - Tamanrasset", "12 - Tébessa", "13 - Tlemcen", "14 - Tiaret", "15 - Tizi Ouzou", 
-  "16 - Alger", "17 - Djelfa", "18 - Jijel", "19 - Sétif", "20 - Saïda", 
-  "21 - Skikda", "22 - Sidi Bel Abbès", "23 - Annaba", "24 - Guelma", "25 - Constantine", 
-  "26 - Médéa", "27 - Mostaganem", "28 - M'Sila", "29 - Mascara", "30 - Ouargla", 
-  "31 - Oran", "32 - El Bayadh", "33 - Illizi", "34 - Bordj Bou Arréridj", "35 - Boumerdès", 
-  "36 - El Tarf", "37 - Tindouf", "38 - Tissemsilt", "39 - El Oued", "40 - Khenchela", 
-  "41 - Souk Ahras", "42 - Tipaza", "43 - Mila", "44 - Aïn Defla", "45 - Naâma", 
-  "46 - Aïn Témouchent", "47 - Ghardaïa", "48 - Relizane", "49 - El M'Ghair", 
-  "50 - El Meniaa", "51 - Ouled Djellal", "52 - Bordj Baji Mokhtar", "53 - Béni Abbès", 
-  "54 - Timimoun", "55 - Touggourt", "56 - Djanet", "57 - In Salah", "58 - In Guezzam"
-];
-
-const notifications = [
-  "🔥 سليم من وهران طلب المراية الكبيرة بـ 9200DA",
-  "✨ إيناس من الجزائر طلبت العرض الصغير",
-  "📦 يوسف من سطيف أكد الطلب تاعو",
-  "🔥 مريم من البليدة طلبت زوج مرايات",
-  "📸 Boutique من قسنطينة طلبت المقاس الكبير",
-  "✨ رانيا من تلمسان طلبت العرض الكبير حالاً",
-  "🔥 أمين من بجاية طلب العرض الصغير",
-  "📦 صالون حلاقة من وهران طلب 3 مرايات كبار",
-];
-
-// --- Helper Components ---
-
-const FeatureCard = ({ icon, title, desc }) => (
-  <div className="bg-[#17120e] p-8 rounded-3xl border border-white/5 hover:border-[#f7d28b]/20 transition-all group">
-    <div className="w-14 h-14 bg-[#f7d28b]/10 rounded-2xl flex items-center justify-center text-[#f7d28b] mb-6 group-hover:scale-110 transition-transform">
-      {icon}
-    </div>
-    <h4 className="text-2xl font-black mb-3 text-[#f7d28b]">{title}</h4>
-    <p className="text-gray-400 leading-relaxed text-lg">{desc}</p>
-  </div>
-);
-
-const Stat = ({ label, value }) => (
-  <div>
-    <div className="text-3xl md:text-4xl font-black text-[#f7d28b] mb-1">{value}</div>
-    <div className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-widest">{label}</div>
-  </div>
-);
-
-const FAQItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border border-white/5 rounded-2xl overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 text-right flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
-      >
-        <span className="font-bold text-lg">{question}</span>
-        <span className={isOpen ? "text-[#f7d28b]" : "text-white"}>
-          {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-        </span>
-      </button>
-      {isOpen && (
-        <div className="p-6 bg-white/2 text-gray-400 border-t border-white/5 animate-in fade-in slide-in-from-top-2">
-          {answer}
-        </div>
-      )}
-    </div>
-  );
-};
-
-// --- Main App Component ---
-
-export default function App() {
-  const [activeNotification, setActiveNotification] = useState(0);
-  const [showNotification, setShowNotification] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [orderSuccess, setOrderSuccess] = useState(false);
-  const [selectedSize, setSelectedSize] = useState("big");
-
-  // Notification Rotation Logic
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowNotification(false);
-      setTimeout(() => {
-        setActiveNotification((prev) => (prev + 1) % notifications.length);
-        setShowNotification(true);
-      }, 500);
-    }, 15000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API Call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setOrderSuccess(true);
-      window.scrollTo({ top: document.getElementById('checkout').offsetTop - 100, behavior: 'smooth' });
-    }, 1500);
-  };
-
-  return (
-    <div className="min-h-screen bg-[#0d0b09] text-white selection:bg-[#f7d28b] selection:text-[#1e140a] font-sans" dir="rtl">
-      {/* Dynamic Font Import */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap');
-        body { font-family: 'Cairo', sans-serif; }
-      `}</style>
-
-      {/* Live Notification Popup */}
-      {showNotification && (
-        <div className="fixed bottom-24 right-4 z-50 bg-[#17120e] border border-[#f7d28b]/20 p-4 rounded-2xl shadow-2xl max-w-[280px] pointer-events-none animate-in slide-in-from-right-10 fade-in duration-500">
-          <div className="text-sm font-semibold text-[#f7d28b]">{notifications[activeNotification]}</div>
-        </div>
-      )}
-
-      {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center justify-center pt-20 pb-12 overflow-hidden px-4">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2000&auto=format&fit=crop" 
-            alt="Luxury Interior" 
-            className="w-full h-full object-cover opacity-20 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d0b09] via-transparent to-[#0d0b09]" />
-        </div>
-        
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#f7c76d]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#d39b34]/5 blur-[100px] rounded-full" />
-        
-        <div className="container max-w-5xl mx-auto relative z-10 text-center">
-          <div className="inline-block px-4 py-2 bg-[#f7d28b] text-[#1e140a] rounded-full font-black text-xs md:text-sm mb-6 tracking-wider animate-bounce">
-             🔥 PRODUCT TRENDING IN ALGERIA 2025
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#f7d28b] leading-tight mb-6 drop-shadow-[0_0_30px_rgba(247,210,139,0.3)]">
-            مراية إنستغرام <br className="hidden md:block" /> TENDENCE ✨
-          </h1>
-
-          <p className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-10">
-            حوّل أي بلاصة عندك لزاوية فخمة عصرية تخطف الأنظار 📸
-            ستايل إنستغرام + إضاءة LED ناعمة + تصميم راقي يخلي الديكور تاعك يبان Premium 🔥
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#checkout"
-              className="px-10 py-5 bg-gradient-to-r from-[#f7d28b] to-[#d39b34] text-[#1e140a] font-black text-xl rounded-full shadow-[0_10px_40px_rgba(247,210,139,0.4)] hover:scale-105 transition-transform text-center"
-            >
-              🛒 أطلب الآن - تخفيض لفترة محدودة
-            </a>
-            <a
-              href="#offers"
-              className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold text-xl rounded-full hover:bg-white/10 transition-all text-center"
-            >
-              🔥 شوف العروض
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Offers Section */}
-      <section id="offers" className="py-24 px-4 bg-[#0a0806]">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-[#f7d28b] mb-16">
-            🔥 العروض المتوفرة حاليا
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Small Size */}
-            <div className="bg-[#17120e] rounded-[40px] overflow-hidden border border-white/5 group transition-transform hover:-translate-y-2">
-              <div className="h-[450px] relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1000&auto=format&fit=crop" alt="Small Mirror" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#17120e] via-transparent to-transparent" />
-                <div className="absolute top-6 right-6 bg-[#f7d28b] text-[#1e140a] px-5 py-2 rounded-full font-black text-sm">
-                  مناسب للغرف
-                </div>
-              </div>
-              <div className="p-8 text-center">
-                <h3 className="text-3xl font-black text-[#f7d28b] mb-4">Small Size - المقاس الصغير</h3>
-                <div className="space-y-2 text-gray-400 text-lg mb-6">
-                  <p>📏 الطول: 80CM</p>
-                  <p>📏 العرض: 40CM</p>
-                  <p>✅ مناسب للغرف الصغيرة / البوتيك / الكوزينة</p>
-                </div>
-                <div className="text-5xl font-black mb-8">
-                  6200 DA <span className="text-xl text-gray-500 line-through mr-3">8500 DA</span>
-                </div>
-                <a href="#checkout" onClick={() => setSelectedSize("small")} className="block w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-[#f7d28b] hover:text-[#1e140a] transition-all text-xl">
-                  إختر هذا العرض
-                </a>
-              </div>
-            </div>
-
-            {/* Big Size */}
-            <div className="bg-[#17120e] rounded-[40px] overflow-hidden border-2 border-[#f7d28b]/30 relative group shadow-[0_0_50px_rgba(247,210,139,0.1)] transition-transform hover:-translate-y-2">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#f7d28b] text-[#1e140a] px-8 py-2 rounded-full font-black text-sm z-10 shadow-xl">
-                الأكثر طلباً للمحلات ✨
-              </div>
-              <div className="h-[450px] relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1622397333309-3056849bc70b?q=80&w=1000&auto=format&fit=crop" alt="Big Mirror" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#17120e] via-transparent to-transparent" />
-                <div className="absolute top-6 right-6 bg-red-600 text-white px-5 py-2 rounded-full font-black text-sm animate-pulse">
-                   STOCK LIMITÉ
-                </div>
-              </div>
-              <div className="p-8 text-center">
-                <h3 className="text-3xl font-black text-[#f7d28b] mb-4">Big Size - المقاس الكبير</h3>
-                <div className="space-y-2 text-gray-400 text-lg mb-6">
-                  <p>📏 الطول: 120CM</p>
-                  <p>📏 العرض: 60CM</p>
-                  <p>✅ يعطي فخامة قوية للمحل / صالونات الحلاقة</p>
-                </div>
-                <div className="text-5xl font-black mb-8">
-                  9200 DA <span className="text-xl text-gray-500 line-through mr-3">12500 DA</span>
-                </div>
-                <a href="#checkout" onClick={() => setSelectedSize("big")} className="block w-full py-4 bg-[#f7d28b] text-[#1e140a] rounded-2xl font-black hover:scale-105 transition-all text-xl shadow-lg">
-                  إختر المقاس الكبير 🔥
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Before / After Section */}
-      <section className="py-24 px-4 bg-[#0a0806]">
-        <div className="container max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-[#f7d28b] mb-16">
-            أظهر الفرق في ديكورك 😍
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-              <div className="relative rounded-3xl overflow-hidden border border-white/5">
-                <img src="https://images.unsplash.com/photo-1513519247388-19345420bd63?q=80&w=800&auto=format&fit=crop" alt="Before" className="w-full h-64 object-cover grayscale opacity-50" />
-                <div className="absolute top-4 right-4 bg-black/60 px-4 py-1 rounded-full text-sm font-bold">قبل تركيب المراية</div>
-              </div>
-              <div className="relative rounded-3xl overflow-hidden border-2 border-[#f7d28b]">
-                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800&auto=format&fit=crop" alt="After" className="w-full h-80 object-cover" />
-                <div className="absolute top-4 right-4 bg-[#f7d28b] text-[#1e140a] px-4 py-1 rounded-full text-sm font-bold">بعد تركيب TENDENCE ✨</div>
-              </div>
-            </div>
-            <div className="text-right space-y-6">
-              <h3 className="text-3xl font-black text-[#f7d28b]">حوّل غرفتك لستوديو تصوير فخم</h3>
-              <p className="text-xl text-gray-400 leading-relaxed">
-                المراية ماشي غير للديكور، هي استثمار في المحتوى تاعك وفي الراحة النفسية تاعك. الإضاءة المدروسة تعطي اتساع للمكان وتخلي كل صورة تخرج Perfect.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 justify-end">
-                  <span>إضاءة متوازنة للماكياج</span>
-                  <CheckCircle size={20} className="text-[#f7d28b]" />
-                </li>
-                <li className="flex items-center gap-3 justify-end">
-                  <span>زاوية تصوير احترافية</span>
-                  <CheckCircle size={20} className="text-[#f7d28b]" />
-                </li>
-                <li className="flex items-center gap-3 justify-end">
-                  <span>لمسة Luxury تعجب الزباين</span>
-                  <CheckCircle size={20} className="text-[#f7d28b]" />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Section */}
-      <section className="py-24 px-4">
-        <div className="container max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-[#f7d28b] mb-16">
-            علاش كامل الناس راهي تطلبها؟ 👀
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FeatureCard icon={<TrendingUp />} title="تصميم عصري يخطف العين" desc="ستايل Instagram Mirror Trending 2025" />
-            <FeatureCard icon={<Lightbulb />} title="إضاءة LED مريحة" desc="إضاءة ناعمة تعطي جو راقي للتصوير والديكور" />
-            <FeatureCard icon={<Camera />} title="Perfect للصور والريلز" desc="إذا تحب Content Creator هاذي تزيدلك قيمة كبيرة" />
-            <FeatureCard icon={<ShieldCheck />} title="جودة مضمونة" desc="خامات قوية + تغليف آمن + ضمان على الجودة" />
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent to-[#17120e]">
-        <div className="container max-w-4xl mx-auto text-center">
-          <div className="bg-white/5 border border-white/10 p-10 md:p-16 rounded-[50px] relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10">
-              <CheckCircle size={120} color="#f7d28b" />
-            </div>
-            <h3 className="text-3xl md:text-4xl font-black mb-8 text-[#f7d28b]">🔥 أكثر منتج مطلوب حاليا في الجزائر</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <Stat label="زبون سعيد" value="+1500" />
-              <Stat label="ولاية" value="58" />
-              <Stat label="تقييم" value="4.9/5" />
-              <Stat label="ضمان" value="100%" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24 px-4 bg-[#17120e]/50">
-        <div className="container max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black text-center text-[#f7d28b] mb-12">الأسئلة الشائعة (FAQ)</h2>
-          <div className="space-y-4">
-            <FAQItem question="واش كاين فالعُلبة؟" answer="تلقى المراية كاملة جاهزة، نظام الإضاءة LED مدمج، وجميع أكسسوارات التثبيت على الحائط." />
-            <FAQItem question="التوصيل لجميع الولايات؟" answer="نعم، التوصيل متوفر لـ 58 ولاية لمركز الشحن (Bureau de livraison) بـ 600 دج فقط." />
-            <FAQItem question="مدة التوصيل؟" answer="يستغرق التوصيل من 2 إلى 5 أيام عمل حسب الولاية والضغط على الطلبيات." />
-            <FAQItem question="كاين ضمان؟" answer="نعم، نوفر ضمان على جودة الزجاج ونظام الإضاءة عند الاستلام." />
-          </div>
-        </div>
-      </section>
-
-      {/* Checkout Section */}
-      <section id="checkout" className="py-24 px-4 bg-[#0d0b09]">
-        <div className="container max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-6xl font-black text-[#f7d28b] mb-4">🛒 أكمل الطلب تاعك الآن</h2>
-            <p className="text-gray-400 text-lg">الكمية محدودة جداً، أطلب قبل نفاذ المخزون!</p>
-          </div>
-
-          {!orderSuccess ? (
-            <form onSubmit={handleSubmit} className="bg-[#17120e] p-8 md:p-12 rounded-[40px] border border-white/5 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold mb-2 text-gray-300">👤 الإسم واللقب</label>
-                  <input
-                    required
-                    placeholder="الإسم الكامل"
-                    className="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-[#f7d28b] transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold mb-2 text-gray-300">📞 رقم الهاتف</label>
-                  <input
-                    required
-                    type="tel"
-                    placeholder="06 / 07 / 05 ..."
-                    className="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-[#f7d28b] transition-all text-left"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold mb-2 text-gray-300">📍 الولاية</label>
-                  <select
-                    required
-                    className="w-full bg-[#17120e] border border-white/10 p-4 rounded-xl outline-none focus:border-[#f7d28b] transition-all"
-                  >
-                    <option value="">إختر الولاية</option>
-                    {ALGERIAN_WILAYAS.map(w => <option key={w} value={w}>{w}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold mb-2 text-gray-300">🏘️ البلدية</label>
-                  <input
-                    required
-                    placeholder="أكتب اسم البلدية"
-                    className="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-[#f7d28b] transition-all"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold mb-2 text-gray-300">📏 إختر المقاس</label>
-                <div className="grid grid-cols-2 gap-4">
-                  <label className={`cursor-pointer border-2 p-4 rounded-2xl text-center transition-all ${selectedSize === "small" ? "border-[#f7d28b] bg-[#f7d28b]/10" : "border-white/5 bg-white/5"}`}>
-                    <input type="radio" name="size" value="small" checked={selectedSize === "small"} onChange={() => setSelectedSize("small")} className="hidden" />
-                    <div className="font-bold">80CM x 40CM</div>
-                    <div className="text-[#f7d28b] font-black">6200 DA</div>
-                  </label>
-                  <label className={`cursor-pointer border-2 p-4 rounded-2xl text-center transition-all ${selectedSize === "big" ? "border-[#f7d28b] bg-[#f7d28b]/10" : "border-white/5 bg-white/5"}`}>
-                    <input type="radio" name="size" value="big" checked={selectedSize === "big"} onChange={() => setSelectedSize("big")} className="hidden" />
-                    <div className="font-bold">120CM x 60CM</div>
-                    <div className="text-[#f7d28b] font-black">9200 DA</div>
-                  </label>
-                </div>
-              </div>
-
-              <div className="bg-[#f7d28b]/10 border border-[#f7d28b]/20 p-6 rounded-3xl space-y-4">
-                <div className="flex items-start gap-4 text-[#f7d28b]">
-                  <AlertTriangle className="flex-shrink-0 mt-1" />
-                  <div className="text-sm leading-relaxed">
-                    <p className="font-black text-lg mb-2">⚠️ ملاحظات هامة قبل الطلب:</p>
-                    <ul className="list-disc list-inside space-y-1 opacity-90">
-                      <li>لازم دفع عربون بين <span className="underline">1000DA و 2000DA</span> باش نبداو نخدمولك الطلبية.</li>
-                      <li>التوصيل يكون للـ <span className="underline">Bureau de livraison</span> فقط بـ <span className="font-bold">600DA</span> والزبون يستلم بنفسه.</li>
-                      <li>المنتج يتجهز مباشرة بعد تأكيد العربون، نرجو الجدية في الطلب.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                disabled={isSubmitting}
-                className="w-full py-6 bg-gradient-to-r from-[#f7d28b] to-[#d39b34] text-[#1e140a] font-black text-2xl rounded-2xl shadow-xl hover:scale-[1.02] transition-all disabled:opacity-50"
-              >
-                {isSubmitting ? "جاري معالجة الطلب..." : "تأكيد الطلب الآن 🔥"}
-              </button>
-            </form>
-          ) : (
-            <div className="bg-green-500/10 border border-green-500/20 p-12 rounded-[40px] text-center animate-in zoom-in-95">
-              <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle size={40} color="white" />
-              </div>
-              <h3 className="text-3xl font-black mb-4">تم استلام طلبك بنجاح!</h3>
-              <p className="text-lg text-gray-300 mb-8">
-                سيتصل بك فريقنا في أقرب وقت عبر الهاتف لتأكيد الطلب وترتيب دفع العربون. شكراً لثقتكم ❤️
-              </p>
-              <button
-                onClick={() => setOrderSuccess(false)}
-                className="px-8 py-3 bg-white/5 rounded-full font-bold hover:bg-white/10 transition-colors"
-              >
-                إرسال طلب آخر
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 border-t border-white/5 text-center text-gray-500 bg-[#0a0806]">
-        <div className="container px-4">
-          <p className="mb-4">© 2025 TENDENCE Instagram Mirror — Livraison 58 Wilaya 🇩🇿</p>
-          <div className="flex justify-center gap-6">
-            <a href="#" className="hover:text-[#f7d28b] transition-colors flex items-center gap-2"><Instagram size={18}/> Instagram</a>
-            <a href="#" className="hover:text-[#f7d28b] transition-colors">WhatsApp</a>
-            <a href="#" className="hover:text-[#f7d28b] transition-colors">TikTok</a>
-          </div>
-        </div>
-      </footer>
-
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-6 left-6 right-6 z-40 md:hidden">
-        <a
-          href="#checkout"
-          className="flex items-center justify-center gap-3 w-full py-4 bg-gradient-to-r from-[#f7d28b] to-[#d39b34] text-[#1e140a] font-black text-lg rounded-full shadow-2xl active:scale-95 transition-transform"
-        >
-          <ShoppingCart size={20} />
-          أطلب الآن قبل نفاذ الكمية
-        </a>
-      </div>
-    </div>
-  );
+```json
+{
+  "strategy_selected": "AIDA (Attention - Interest - Desire - Action)",
+  "target_audience_psychology": {
+    "core_desire": "الزبون الجزائري يحب يبان مختلف، classy و influencer حتى لو كان budget محدود.",
+    "deepest_pain_point": "الديكور تاعو عادي، الصور يخرجو بدون vibe، ومايحسش روحو premium كي يدير selfie ولا reel.",
+    "unfair_advantage": "المنتوج ماشي غير مراية… هو قطعة décor + lighting + social status + viral content tool كامل في منتوج واحد.",
+    "why_it_converts": [
+      "أي واحد يشوفها يفهم مباشرة أنها Instagram Mirror",
+      "تخلي أي غرفة تبان luxury setup",
+      "تعطي feeling تاع influencer حتى للناس العاديين",
+      "Perfect for TikTok / Reels / Stories",
+      "تشجع الضيف أو الزبون يصور وينشر → marketing مجاني"
+    ]
+  },
+  "color_palette": {
+    "primary": "#0F0F0F - Luxury Black",
+    "secondary": "#D4AF37 - Royal Gold",
+    "accent": "#FFF3D1 - Warm LED Cream"
+  },
+  "hero_section": {
+    "headline": "🚨 الناس كامل ولات تدير Setup Influencer… وانت مزالك بمراية عادية؟",
+    "subheadline": "حوّل غرفتك، محلّك ولا studio تاعك لـ Instagram Corner يخطف العين بإضاءة LED فخمة وتصميم يخليك تبان Premium في أي صورة ✨",
+    "visual_concept": "بنت ولا شاب قدام المراية، LED شاعل warm glow، الصورة خارجة aesthetic بزاف كيما reels المشاهير، مع Instagram UI ظاهر فوق المراية."
+  },
+  "body_section": {
+    "pain_points": [
+      "❌ صورك يخرجو dark ومافيهمش vibe",
+      "❌ setup تاعك يبان cheap قدام الناس",
+      "❌ الستوري تاعك عادي ومايشدش attention",
+      "❌ تضيع فلوس على ring light بلا نتيجة حقيقية",
+      "❌ أي واحد يدخل لغرفتك مايحسش بالفخامة"
+    ],
+    "solution_features": [
+      "✅ LED intégré يعطي إضاءة soft تخلي الوجه أنقى وأوضح",
+      "✅ تصميم Instagram trendy يخلي أي بلاصة تبان modern",
+      "✅ 3 tailles حسب المساحة والbudget",
+      "✅ بطارية rechargeable تستعملها وين تحب",
+      "✅ perfect للغرف، salons, cafés, boutiques وحتى gaming setup",
+      "✅ أي واحد يشوفها يسقسيك عليها مباشرة"
+    ],
+    "visual_concept": "Before / After transformation: غرفة عادية → Instagram luxury setup مع glow ذهبي وتعليقات fake social proof كيما: ‘منين شريتيها؟ 🔥’"
+  },
+  "close_section": {
+    "urgent_offer": {
+      "small": "40CM / 20CM = 3200DA",
+      "medium": "80CM / 40CM = 6200DA",
+      "big": "120CM / 60CM = 8200DA",
+      "bonus": [
+        "🎁 Livraison 58 Wilaya",
+        "🎁 تخفيض عند شراء زوج",
+        "🎁 الكمية محدودة بزاف"
+      ]
+    },
+    "guarantee": [
+      "✔ Produit Premium",
+      "✔ Vérification avant livraison",
+      "✔ LED Haute Qualité",
+      "✔ Packaging ضد الكسر"
+    ],
+    "visual_concept": "المراية داخل packaging premium مع glow ذهبي وBadge: BEST SELLER DZ + زر CTA أحمر كبير: اطلب الآن قبل نفاذ الكمية"
+  },
+  "high_converting_copywriting": {
+    "hooks": [
+      "😳 أول حاجة أي invité يشوفها ويفوت يسقسيك عليها!",
+      "🔥 المراية لي راهي دايرة buzz فالتيك توك وصلت للجزائر!",
+      "✨ أي selfie بالمراية هذي يبان كيما studio pro",
+      "🚨 خلي setup تاعك يبان أغلى من قيمتو الحقيقية"
+    ],
+    "nif_trigger": "راك تشوف الناس كامل setup تاعهم classy وانت مزالك بالمراية القديمة؟",
+    "fomo_trigger": "الكمية محدودة والطلب راه طالع بزاف خصوصاً على Big Size 🔥",
+    "cta_buttons": [
+      "🔥 اطلبها الآن",
+      "🚚 نوصلك حتى للدار",
+      "✨ جرّب Setup influencer اليوم",
+      "📩 احجز قبل ما تسالي الكمية"
+    ]
+  },
+  "upsell_strategy": {
+    "bundle_offer": "زوج مرايات = Livraison Offerte",
+    "business_offer": "Offer خاص للمحلات والكافيهات عند شراء 3 pièces",
+    "cross_sell": "Mini LED décor mirror بسعر مخفض مع Big Size"
+  },
+  "landing_page_sections": [
+    "Hero Section + Viral Hook",
+    "Before / After Setup",
+    "UGC Social Proof",
+    "Sizes Comparison",
+    "Why Everyone Wants It",
+    "Live Instagram Preview",
+    "Order Form + Urgency"
+  ],
+  "3d_virtual_preview": {
+    "feature_name": "Live Instagram Mirror Preview",
+    "description": "الزبون يدخل Instagram username تاعو ويشوف مباشرة كيفاش راح تبان المراية بالاسم تاعو فوقها.",
+    "psychology": "كي يشوف username تاعو فوق المراية، الدماغ يعتبر المنتوج already ملكه → conversion rate يطلع بزاف.",
+    "frontend_logic": {
+      "input": "Instagram Username",
+      "live_update": "يتبدل مباشرة فوق mockup",
+      "animation": "LED Glow + floating effect"
+    }
+  },
+  "google_sheet_integration": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec",
+    "method": "POST",
+    "fields": [
+      "name",
+      "phone",
+      "wilaya",
+      "address",
+      "product",
+      "price"
+    ],
+    "javascript_fetch": "fetch('https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec', { method: 'POST', body: new URLSearchParams(formData) })"
+  },
+  "recommended_tech_stack": {
+    "frontend": "HTML + TailwindCSS + Vanilla JS",
+    "hosting": "GitHub Pages",
+    "backend": "Google Apps Script",
+    "database": "Google Sheets",
+    "ads": "Facebook Ads + TikTok Spark Ads"
+  }
 }
+```
