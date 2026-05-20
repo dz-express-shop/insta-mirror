@@ -466,9 +466,9 @@
             // Send to Google Sheets
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
-                    // Build WhatsApp URL
+                    // Build WhatsApp URL with clean newline formatting to prevent LTR/RTL mix issues
                     const waNumber = "213672975420";
-                    const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم: ${customerName}\n📱 الهاتف: ${phone1}\n📍 الولاية: ${wilaya}\n🏠 البلدية: ${commune}\n📦 العرض: ${productName}\n💰 السعر: ${productPrice} دج\n\nأنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
+                    const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم:\n${customerName}\n\n📱 الهاتف:\n${phone1}\n\n📍 الولاية:\n${wilaya}\n\n🏠 البلدية:\n${commune}\n\n📦 العرض:\n${productName}\n\n💰 السعر:\n${productPrice} دج\n\n✅ أنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
                     
                     const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
                     
