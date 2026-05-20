@@ -1,440 +1,500 @@
-```html
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مراية إنستغرام بإضاءة LED - Instagram Mirror</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>مراية إنستغرام VIP لزيادة المبيعات | للمحلات والمشاريع</title>
+    
+    <!-- Premium Arabic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        changa: ['Changa', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    },
+                    colors: {
+                        gold: '#E5C07B',
+                        goldDark: '#D4AF37',
+                        darkBg: '#09090b',
+                        cardBg: '#18181b',
+                        urgent: '#ef4444',
+                        verify: '#1DA1F2'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --dark-bg: #121212;
-            --light-text: #F5F5F5;
-            --urgent-red: #E63946;
-            --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            background-color: #050505; 
+            color: #f4f4f5; 
+            overflow-x: hidden;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .hero h1 {
-            color: var(--primary-gold);
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .hero p.hook {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            color: #ddd;
-        }
-
-        /* 3D Virtual Template Area */
-        .virtual-try-on {
-            background: #1e1e1e;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: center;
-            border: 1px solid #333;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
-        }
-
-        .virtual-try-on h3 {
-            color: var(--primary-gold);
-            margin-bottom: 15px;
-        }
-
-        .ig-input-group {
-            margin-bottom: 20px;
-        }
-
-        .ig-input-group input {
-            padding: 12px;
-            width: 80%;
-            max-width: 300px;
-            border: 2px solid var(--primary-gold);
-            border-radius: 8px;
-            background: #000;
-            color: #fff;
-            text-align: center;
-            font-size: 1.1rem;
-            outline: none;
-        }
-
-        .mirror-simulation {
+        h1, h2, h3, .font-changa { font-family: 'Changa', sans-serif; }
+        
+        /* Ultra Realistic Wall & Mirror Glow */
+        .wall-texture {
+            background-color: #111;
+            background-image: radial-gradient(circle at 50% 50%, #222 0%, #050505 100%);
             position: relative;
-            width: 100%;
-            max-width: 350px;
-            height: 500px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 40px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.8), inset 0 0 10px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 8px solid #f0f0f0;
         }
 
-        .mirror-header {
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-            background: #fff;
-            color: #000;
-        }
-
-        .mirror-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--ig-gradient);
-            margin-left: 10px;
-        }
-
-        .mirror-username-display {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .mirror-glass {
-            flex-grow: 1;
-            background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 50%, #e0e0e0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-        }
-
-        /* Features / Pain Points */
-        .features {
-            margin: 40px 0;
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 10px;
+        .mirror-glow {
+            background: #ffffff;
+            box-shadow: 
+                0 0 80px rgba(229, 192, 123, 0.4), /* Outer ambient glow */
+                0 0 30px rgba(229, 192, 123, 0.8), /* Inner intense LED */
+                inset 0 0 15px rgba(0,0,0,0.15); /* Glass edge shadow */
+            border: 5px solid #f8f8f8;
+            border-radius: 45px;
+            position: relative;
         }
         
-        .features h2 {
-            color: var(--primary-gold);
-            text-align: center;
-            margin-bottom: 20px;
+        .ig-gradient {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
-        .features ul {
-            list-style: none;
+        /* Glass Reflection Effect */
+        .glass-reflection {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.05) 100%);
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 10;
         }
 
-        .features li {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
+        /* Radio Buttons Custom Selection */
+        input[type="radio"]:checked + div {
+            border-color: #E5C07B;
+            background-color: rgba(229, 192, 123, 0.05);
+            box-shadow: 0 0 25px rgba(229, 192, 123, 0.2);
+            transform: translateY(-2px);
         }
 
-        .features li::before {
-            content: '✨';
-            margin-left: 10px;
+        /* Animations */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(229, 192, 123, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0); }
         }
+        .btn-gold-glow { animation: pulse-gold 2s infinite; }
 
-        /* Pricing Section */
-        .pricing {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 30px 0;
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
+        .animate-bounce-slow { animation: bounce-slow 3s infinite; }
 
-        .price-card {
-            background: #222;
-            border: 2px solid #444;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
+        /* Loader */
+        .loader {
+            border: 4px solid rgba(255,255,255,0.1);
+            border-left-color: #E5C07B;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
         }
-
-        .price-card.active {
-            border-color: var(--primary-gold);
-            background: #2a220a;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-
-        .price-card h4 {
-            font-size: 1.4rem;
-            color: #fff;
-        }
-
-        .price-card .price {
-            font-size: 1.8rem;
-            color: var(--primary-gold);
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        /* Form Section */
-        .order-form {
-            background: #111;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid var(--primary-gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
-        }
-
-        .order-form h2 {
-            text-align: center;
-            color: var(--urgent-red);
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background: #222;
-            color: #fff;
-            font-size: 1rem;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 15px;
-            background: var(--urgent-red);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            animation: pulse 2s infinite;
-            margin-top: 10px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        .guarantee {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        /* Success Message */
-        #success-message {
-            display: none;
-            background: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 1.2rem;
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body>
+<body class="selection:bg-gold selection:text-black">
 
-<div class="container">
-    <section class="hero">
-        <h1>راك حاب ترجع شومبرتك ستوديو تاع الانستغرام؟ 📸</h1>
-        <p class="hook">عييت من الإضاءة العيانة لي تفسدلك لي فوطو؟ مراية إنستغرام العجيبة بالـ LED هي السر لي يخلي تصاورك يبانو بروفيسيونال ويجيبولك لي جام! ديزاين يهبل، طوندونس، وتزيد النص في ديكور بيتك.</p>
-    </section>
-
-    <section class="virtual-try-on">
-        <h3>شوف اسمك كيفاش يخرج في المراية 😍</h3>
-        <p style="margin-bottom: 15px; font-size: 0.9rem; color: #ccc;">أكتب اليوزرنيم تاعك في الانستغرام باش تشوف النتيجة (Virtual Preview)</p>
-        
-        <div class="ig-input-group">
-            <input type="text" id="ig-handle" placeholder="Your_Instagram_Name" oninput="updateMirrorText()">
-        </div>
-
-        <div class="mirror-simulation">
-            <div class="mirror-header">
-                <div class="mirror-avatar"></div>
-                <div class="mirror-username-display" id="mirror-username">@Your_Name</div>
-                <div style="margin-right: auto; color:#262626; font-size: 1.2rem;">⋮</div>
+    <!-- HERO SECTION (B2B FOCUS) -->
+    <header class="relative pt-12 pb-16 px-4 text-center border-b border-zinc-800 bg-darkBg">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-block bg-zinc-900 text-gold px-6 py-2 rounded-full text-sm font-bold mb-6 border border-gold/30">
+                💎 تراند 2025 لزيادة المبيعات في الجزائر
             </div>
-            <div class="mirror-glass">
-                (انعكاس صورتك هنا مع إضاءة LED)
-            </div>
-            <div class="mirror-header" style="border-top: 1px solid #eee; border-bottom: none; display: flex; justify-content: space-around; padding: 10px; font-size: 1.2rem;">
-                <span style="color: #ed4956;">❤️</span> 💬 ↗️ 
-            </div>
-        </div>
-    </section>
-
-    <section class="features">
-        <h2>علاش هاد المراية لازم تكون عندك؟ 🔥</h2>
-        <ul>
-            <li><strong>وداعاً للظلام:</strong> مصباح LED مدمج يعطيك إضاءة بيرفيكت للسيلفي، وجهك يبان منور بلا فيلتر.</li>
-            <li><strong>ديزاين سبيسيال ليك:</strong> مخدومة باش تعكس شخصيتك، ترجع بيتك يبان كيما تاع مشاهير التيكتوك والانستغرام.</li>
-            <li><strong>تهنيك من الخيوط:</strong> بطارية قابلة للشحن (Rechargeable)، حطها وين تحب بلا ما تتقلق على تريسيتي.</li>
-            <li><strong>كاليتي طوب:</strong> ماتريال صوليد، خدمة متقنة، وتشدلك طول العمر.</li>
-        </ul>
-    </section>
-
-    <h2 style="text-align: center; color: var(--primary-gold); margin-bottom: 15px;">اختار الحجم لي يخرج عليك</h2>
-    <section class="pricing">
-        <div class="price-card" onclick="selectProduct('Small', '3200', this)">
-            <h4>حجم صغير (40CM x 20CM)</h4>
-            <div class="price">3200 DA</div>
-            <p>مثالي للمساحات الصغيرة والمكاتب</p>
+            <h1 class="text-4xl md:text-6xl font-changa font-extrabold text-white mb-6 leading-tight">
+                رجّع حانوتك <span class="text-gold">"براند عالمية"</span><br>وضاعف مبيعاتك أونلاين 🚀
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 font-medium max-w-3xl mx-auto leading-relaxed">
+                السر لي يخلي البوتيكات الكبار يبيعو أكثر! مراية الإنستغرام الـ VIP تخلي سلعتك تبان فخمة، وتخلي الكليان يصور روحو ويديرلك إشهار باطل (Free Marketing) قدام الآلاف.
+            </p>
+            <a href="#order-section" class="btn-gold-glow inline-flex items-center justify-center gap-3 bg-gradient-to-r from-goldDark to-gold text-black text-2xl font-bold py-4 px-10 rounded-xl w-full md:w-auto hover:opacity-90 transition">
+                <span>أطلبها الآن لمشروعك</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
         </div>
         
-        <div class="price-card active" onclick="selectProduct('Medium', '6200', this)">
-            <h4>حجم متوسط (80CM x 40CM)</h4>
-            <div class="price">6200 DA</div>
-            <p>الأكثر طلباً - لمسة فخامة شاملة</p>
-        </div>
+        <!-- Background Blur effect -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-gold/10 blur-[100px] rounded-full pointer-events-none"></div>
+    </header>
 
-        <div class="price-card" onclick="selectProduct('Big', '8200', this)">
-            <h4>حجم كبير (120CM x 60CM)</h4>
-            <div class="price">8200 DA</div>
-            <p>بيان فخامة متكامل - لكامل الجسم</p>
+    <!-- VIRTUAL TRY-ON (ULTRA REALISTIC) -->
+    <section class="py-16 px-4 wall-texture border-b border-zinc-900 overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-changa text-gold mb-4">تخيل البوتيك تاعك هكا! 😍</h2>
+                <p class="text-gray-400 text-lg">أكتب اسم الباج أو الحانوت وشوف كيفاش تخرج المراية مع العلامة الزرقاء.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                <!-- Input Control -->
+                <div class="w-full md:w-1/3 space-y-4 bg-cardBg p-6 md:p-8 rounded-2xl border border-zinc-800 shadow-xl z-20">
+                    <label class="block text-gold font-bold text-xl mb-2">اسم الباج / البوتيك:</label>
+                    <input type="text" id="ig-input" placeholder="مثال: Carmella_Boutique" 
+                           class="w-full p-4 text-center text-xl bg-darkBg border-2 border-zinc-700 rounded-xl text-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 dir-ltr font-tajawal transition"
+                           oninput="updateMirror()">
+                    <div class="mt-4 p-4 bg-zinc-900 rounded-lg text-sm text-gray-400 border border-zinc-800">
+                        ✨ جرب الآن ولاحظ كيف ستعطي هذه المرآة <strong>هيبة ومصداقية</strong> لا مثيل لها لمحلك التجاري.
+                    </div>
+                </div>
+
+                <!-- Realistic Simulation -->
+                <div class="w-full md:w-1/2 flex justify-center relative">
+                    <!-- The Mirror -->
+                    <div class="relative w-full max-w-[360px] h-[650px] mirror-glow flex flex-col z-10 font-sans animate-bounce-slow bg-black">
+                        
+                        <!-- Top Phone Bar -->
+                        <div class="absolute top-0 inset-x-0 h-8 flex justify-between items-center px-6 text-black z-30 pt-2 bg-white rounded-t-[40px]">
+                            <span class="text-[11px] font-bold">12:53</span>
+                            <div class="w-16 h-5 bg-black rounded-full mx-auto relative top-[-4px]"></div> <!-- Dynamic Island Fake -->
+                            <div class="flex gap-1 items-center">
+                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21L15.6 16.2C16.5 15 17 13.5 17 12C17 9.2 14.8 7 12 7C9.2 7 7 9.2 7 12C7 13.5 7.5 15 8.4 16.2L12 21Z"/></svg>
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"/><path d="M22 11V13"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- IG Header -->
+                        <div class="bg-white px-4 pt-10 pb-3 flex items-center rounded-t-[40px] z-20 border-b border-gray-100">
+                            <div class="w-12 h-12 rounded-full ig-gradient p-[2px] shrink-0">
+                                <div class="bg-white w-full h-full rounded-full border border-gray-200 flex items-center justify-center overflow-hidden">
+                                    <div class="w-full h-full bg-zinc-200 flex items-center justify-center text-zinc-500 text-[10px] font-bold">LOGO</div>
+                                </div>
+                            </div>
+                            <div class="mr-3 text-right flex-1 flex flex-col items-start justify-center overflow-hidden" dir="ltr">
+                                <div class="flex items-center gap-1 max-w-full">
+                                    <span class="text-black font-bold text-[15px] truncate" id="mirror-username">@Carmella_Boutique</span>
+                                    <!-- Blue Badge -->
+                                    <svg viewBox="0 0 24 24" class="w-4 h-4 text-verify fill-current shrink-0" aria-hidden="true"><g><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.918-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.337 2.25c-.416-.165-.866-.25-1.336-.25-2.21 0-3.918 1.79-3.918 4 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.46.74 2.746 1.867 3.45-.14.443-.218.916-.218 1.4 0 2.21 1.71 4 3.918 4 .47 0 .92-.086 1.336-.25C9.184 22.585 10.49 23.5 12 23.5s2.816-.915 3.337-2.25c.416.163.866.25 1.336.25 2.21 0 3.918-1.79 3.918-4 0-.484-.078-.957-.218-1.4 1.127-.704 1.867-1.99 1.867-3.45zm-10.87 5.4l-4.48-4.48 1.41-1.41 3.07 3.07 7.57-7.57 1.41 1.41-8.98 8.98z"></path></g></svg>
+                                </div>
+                                <span class="text-[11px] text-gray-500 font-medium">Boutique & Shopping</span>
+                            </div>
+                            <div class="text-black font-black pb-2 text-xl shrink-0">⋮</div>
+                        </div>
+                        
+                        <!-- Glass Area -->
+                        <div class="flex-1 bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] flex items-center justify-center relative">
+                            <div class="glass-reflection"></div>
+                            <div class="text-center px-4 relative z-20">
+                                <div class="text-7xl mb-4 opacity-40">📸</div>
+                                <span class="text-gold font-bold text-lg drop-shadow-md">انعكاس منتجاتك الساحر هنا</span>
+                            </div>
+                        </div>
+
+                        <!-- IG Footer (Stats) -->
+                        <div class="bg-white px-4 pt-3 pb-6 flex flex-col rounded-b-[40px] z-20" dir="ltr">
+                            <div class="flex justify-between items-center text-black text-2xl mb-2">
+                                <div class="flex gap-4">
+                                    <span class="text-red-500 scale-110 cursor-pointer">❤️</span>
+                                    <span class="cursor-pointer">💬</span>
+                                    <span class="cursor-pointer">↗️</span>
+                                </div>
+                                <span class="cursor-pointer">🔖</span>
+                            </div>
+                            <div class="text-black font-bold text-[14px] mb-1">
+                                1.5M likes
+                            </div>
+                            <div class="text-gray-800 text-[13px] font-medium leading-tight">
+                                <span class="font-bold text-black" id="mirror-desc-username">@Carmella_Boutique</span> 
+                                N01 en Algerie ✨ The best mirror for our store...
+                            </div>
+                            <div class="text-gray-400 text-[12px] mt-1 font-medium">View all 999 comments</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="order-form">
-        <h2>سارع بالطلب الآن! الكمية جد محدودة 🚨</h2>
-        <form id="orderForm" name="submit-to-google-sheet">
-            
-            <div class="form-group">
-                <label>الاسم واللقب</label>
-                <input type="text" name="name" required placeholder="اكتب اسمك هنا">
+    <!-- PRICING & OFFERS -->
+    <section class="py-16 px-4 bg-darkBg border-b border-zinc-900">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-changa text-center mb-4 text-white">باقة العروض المتوفرة 📦</h2>
+            <p class="text-center text-gray-400 mb-12 text-lg max-w-2xl mx-auto">اختر الحجم الذي يناسب مساحة محلك التجاري. <span class="text-gold font-bold">تصنع بالطلب، والكمية محدودة جداً!</span></p>
+
+            <div class="flex justify-center mb-12">
+                <!-- Main image showcase -->
+                <img src="Gemini_Generated_Image_czhnqkczhnqkczhn.png" alt="أحجام مرايا انستغرام للمحلات" 
+                     class="w-full max-w-3xl rounded-3xl border border-zinc-800 shadow-2xl">
             </div>
-
-            <div class="form-group">
-                <label>رقم الهاتف</label>
-                <input type="tel" name="phone" required placeholder="05XX XX XX XX">
-            </div>
-
-            <div class="form-group">
-                <label>الولاية</label>
-                <input type="text" name="wilaya" required placeholder="مثال: الجزائر العاصمة">
-            </div>
-
-            <div class="form-group">
-                <label>البلدية / العنوان بالتفصيل</label>
-                <input type="text" name="address" required placeholder="عنوانك الكامل">
-            </div>
-
-            <input type="hidden" id="product_input" name="product" value="Medium (80CM x 40CM)">
-            <input type="hidden" id="price_input" name="price" value="6200">
-
-            <button type="submit" class="btn-submit" id="submitBtn">أكد طلبيتي الآن والدفع عند الاستلام 🚚</button>
-            
-            <p class="guarantee">✅ توصيل متوفر لـ 58 ولاية | 🛡️ ضمان الجودة | 💸 الدفع كاش كي تلحقك السلعة</p>
-        </form>
-
-        <div id="success-message">
-            🎉 مبروك عليك! تم تسجيل طلبيتك بنجاح. سنتصل بك في أقرب وقت لتأكيد الطلب.
         </div>
     </section>
-</div>
 
-<script>
-    // 1. Virtual Try-On Logic
-    function updateMirrorText() {
-        const input = document.getElementById('ig-handle').value;
-        const display = document.getElementById('mirror-username');
-        if(input.trim() === '') {
-            display.innerText = '@Your_Name';
-        } else {
-            // Remove @ if user types it, then add it back to ensure single @
-            display.innerText = '@' + input.replace('@', '');
+    <!-- HIGH-QUALITY CHECKOUT FORM -->
+    <section id="order-section" class="py-16 px-4 bg-[#0a0a0c] relative">
+        <!-- Glow background -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <!-- Normal Form Section -->
+            <div id="checkout-container" class="bg-cardBg border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-changa text-white mb-3">استمارة الطلب (للمحترفين فقط) 📝</h2>
+                    <p class="text-gray-400">يرجى ملء المعلومات بدقة. فريقنا سيصنع المرآة خصيصاً بالاسم الذي تختاره.</p>
+                </div>
+
+                <form id="checkout-form" class="space-y-8">
+                    <!-- 1. Offer Selection -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gold flex items-center gap-2"><span>1.</span> اختر العرض المناسب:</h3>
+                        
+                        <label class="block cursor-pointer relative">
+                            <input type="radio" name="product_selection" value="Big (120CM x 60CM)|8200" class="peer sr-only" required>
+                            <div class="p-5 bg-darkBg border-2 border-zinc-800 rounded-2xl transition-all duration-300 flex justify-between items-center hover:border-gold/50">
+                                <div>
+                                    <h4 class="font-bold text-lg md:text-xl text-white">العرض الاحترافي BIG (120x60 CM) 👑</h4>
+                                    <p class="text-sm text-gray-400 mt-1">للملابس والصالونات الكبرى</p>
+                                </div>
+                                <div class="text-2xl md:text-3xl font-changa font-bold text-gold">8200 DA</div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer relative">
+                            <input type="radio" name="product_selection" value="Medium (80CM x 40CM)|6200" class="peer sr-only" checked required>
+                            <div class="p-5 bg-darkBg border-2 border-zinc-800 rounded-2xl transition-all duration-300 flex justify-between items-center hover:border-gold/50">
+                                <div>
+                                    <h4 class="font-bold text-lg md:text-xl text-white">العرض المتوسط MEDIUM (80x40 CM) ⭐</h4>
+                                    <p class="text-sm text-gray-400 mt-1">للأحذية، الكوسميتيك، الحلويات</p>
+                                </div>
+                                <div class="text-2xl md:text-3xl font-changa font-bold text-gold">6200 DA</div>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer relative">
+                            <input type="radio" name="product_selection" value="Small (40CM x 20CM)|3200" class="peer sr-only" required>
+                            <div class="p-5 bg-darkBg border-2 border-zinc-800 rounded-2xl transition-all duration-300 flex justify-between items-center hover:border-gold/50">
+                                <div>
+                                    <h4 class="font-bold text-lg md:text-xl text-white">العرض الصغير SMALL (40x20 CM) 💡</h4>
+                                    <p class="text-sm text-gray-400 mt-1">للمجوهرات، الساعات، والمكاتب</p>
+                                </div>
+                                <div class="text-2xl md:text-3xl font-changa font-bold text-gold">3200 DA</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Hidden inputs for backend -->
+                    <input type="hidden" id="product" name="product" value="">
+                    <input type="hidden" id="price" name="price" value="">
+                    <input type="hidden" id="combined_phone" name="phone" value="">
+                    <input type="hidden" id="combined_address" name="address" value="">
+
+                    <!-- 2. Customer Info -->
+                    <div class="space-y-5 pt-6 border-t border-zinc-800">
+                        <h3 class="text-xl font-bold text-gold flex items-center gap-2"><span>2.</span> معلومات التوصيل:</h3>
+                        
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">الاسم الكامل / اسم المحل <span class="text-urgent">*</span></label>
+                            <input type="text" id="raw_name" name="name" required placeholder="اكتب اسمك هنا" 
+                                   class="w-full p-4 bg-darkBg border border-zinc-700 rounded-xl text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-lg transition">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">رقم الهاتف الأساسي <span class="text-urgent">*</span></label>
+                                <input type="tel" id="raw_phone1" required placeholder="0550 00 00 00" dir="ltr"
+                                       class="w-full p-4 bg-darkBg border border-zinc-700 rounded-xl text-white text-right focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-lg transition">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">رقم هاتف احتياطي (اختياري)</label>
+                                <input type="tel" id="raw_phone2" placeholder="0770 00 00 00" dir="ltr"
+                                       class="w-full p-4 bg-darkBg border border-zinc-700 rounded-xl text-white text-right focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-lg transition">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">الولاية <span class="text-urgent">*</span></label>
+                                <select id="raw_wilaya" name="wilaya" required 
+                                        class="w-full p-4 bg-darkBg border border-zinc-700 rounded-xl text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-lg appearance-none cursor-pointer">
+                                    <option value="" disabled selected>-- اختر الولاية --</option>
+                                    <!-- Populated via JS -->
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">البلدية <span class="text-urgent">*</span></label>
+                                <input type="text" id="raw_commune" required placeholder="اسم البلدية" 
+                                       class="w-full p-4 bg-darkBg border border-zinc-700 rounded-xl text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-lg transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Serious Buyer Checkbox -->
+                    <div class="pt-6 border-t border-zinc-800">
+                        <label class="flex items-start gap-4 cursor-pointer bg-red-950/20 p-5 rounded-2xl border border-red-900/50 hover:border-red-500/80 transition group">
+                            <div class="pt-1">
+                                <input type="checkbox" required class="w-6 h-6 accent-urgent cursor-pointer">
+                            </div>
+                            <div class="select-none">
+                                <p class="text-red-400 font-bold text-lg mb-1 group-hover:text-red-300 transition">أقسم بالله العلي العظيم أنني جاد في طلبي!</p>
+                                <p class="text-sm text-gray-400 leading-relaxed">وأتعهد بأنني سأرد على الهاتف لتأكيد الطلب واستلام المرآة عند وصولها. (المنتجات تصنع خصيصاً بالاسم وتكلفنا الوقت والمال).</p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-goldDark to-gold text-black text-2xl font-changa font-bold py-5 rounded-xl shadow-[0_0_20px_rgba(229,192,123,0.3)] mt-8 hover:opacity-90 transition flex justify-center items-center gap-3">
+                        <span id="btn-text">أرسل طلبي الآن</span>
+                        <svg id="btn-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <div id="btn-loader" class="loader hidden"></div>
+                    </button>
+                    
+                    <div class="flex justify-center gap-6 mt-4 text-gray-500 text-sm font-bold">
+                        <span class="flex items-center gap-2">✅ الدفع عند الاستلام</span>
+                        <span class="flex items-center gap-2">🚚 توصيل 58 ولاية</span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- THANK YOU / WHATSAPP SECTION (Initially Hidden) -->
+            <div id="thank-you-container" class="hidden bg-cardBg border-2 border-[#25D366]/50 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,211,102,0.15)] text-center">
+                <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="text-5xl">🎉</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-changa text-white mb-4">تم استلام طلبك المبدئي بنجاح!</h2>
+                <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl mx-auto">
+                    شكراً لك <span id="display-client-name" class="text-gold font-bold"></span>. 
+                    لتأكيد طلبك وبدء تصنيع المرآة الخاصة بك فوراً، <span class="text-white font-bold underline decoration-[#25D366] decoration-2 underline-offset-4">يجب عليك إكمال الطلب عبر الواتساب</span>.
+                </p>
+                
+                <a href="#" id="wa-confirm-btn" target="_blank" class="inline-flex items-center justify-center gap-3 w-full md:w-auto bg-[#25D366] text-white text-2xl font-bold py-5 px-10 rounded-xl hover:bg-[#20bd5a] transition shadow-lg shadow-[#25D366]/30 animate-bounce-slow">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span>أكمل طلبيتي عبر واتساب</span>
+                </a>
+                <p class="mt-4 text-sm text-gray-500">الرسالة مجهزة تلقائياً، فقط اضغط على الزر واضغط إرسال (Send).</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-10 text-center border-t border-zinc-900">
+        <p class="text-gold font-changa font-bold text-xl mb-2">Instagram Mirror VIP 2025</p>
+        <p class="text-gray-500 text-sm">صُنع خصيصاً لزيادة مبيعات أصحاب الأعمال في الجزائر.</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // 1. Generate 58 Wilayas
+        const wilayas = [
+            "01 - أدرار", "02 - الشلف", "03 - الأغواط", "04 - أم البواقي", "05 - باتنة", "06 - بجاية", "07 - بسكرة", "08 - بشار", "09 - البليدة", "10 - البويرة",
+            "11 - تمنراست", "12 - تبسة", "13 - تلمسان", "14 - تيارت", "15 - تيزي وزو", "16 - الجزائر", "17 - الجلفة", "18 - جيجل", "19 - سطيف", "20 - سعيدة",
+            "21 - سكيكدة", "22 - سيدي بلعباس", "23 - عنابة", "24 - قالمة", "25 - قسنطينة", "26 - المدية", "27 - مستغانم", "28 - المسيلة", "29 - معسكر", "30 - ورقلة",
+            "31 - وهران", "32 - البيض", "33 - إليزي", "34 - برج بوعريريج", "35 - بومرداس", "36 - الطارف", "37 - تندوف", "38 - تيسمسيلت", "39 - الوادي", "40 - خنشلة",
+            "41 - سوق أهراس", "42 - تيبازة", "43 - ميلة", "44 - عين الدفلى", "45 - النعامة", "46 - عين تموشنت", "47 - غرداية", "48 - غليزان", "49 - تيميمون", "50 - برج باجي مختار",
+            "51 - أولاد جلال", "52 - بني عباس", "53 - إن صالح", "54 - إن قزام", "55 - تقرت", "56 - جانت", "57 - المغير", "58 - المنيعة"
+        ];
+        
+        const wilayaSelect = document.getElementById('raw_wilaya');
+        wilayas.forEach(w => {
+            let option = document.createElement('option');
+            option.value = w;
+            option.text = w;
+            wilayaSelect.appendChild(option);
+        });
+
+        // 2. Virtual Mirror Logic
+        function updateMirror() {
+            const inputVal = document.getElementById('ig-input').value.trim();
+            const displayHeader = document.getElementById('mirror-username');
+            const displayDesc = document.getElementById('mirror-desc-username');
+            
+            let formattedName = "@Carmella_Boutique"; // Default
+            
+            if(inputVal !== "") {
+                // Remove @ if typed, replace spaces with underscores to look like IG handle
+                formattedName = "@" + inputVal.replace(/^@/, '').replace(/\s+/g, '_');
+            }
+            
+            displayHeader.innerText = formattedName;
+            displayDesc.innerText = formattedName;
         }
-    }
 
-    // 2. Product Selection Logic
-    function selectProduct(size, price, element) {
-        // Remove active class from all
-        const cards = document.querySelectorAll('.price-card');
-        cards.forEach(card => card.classList.remove('active'));
+        // Initialize Virtual Mirror
+        window.onload = () => updateMirror();
+
+        // 3. Form Submission & Flow Logic
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec';
+        const form = document.getElementById('checkout-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnLoader = document.getElementById('btn-loader');
         
-        // Add active class to clicked
-        element.classList.add('active');
+        const checkoutContainer = document.getElementById('checkout-container');
+        const thankYouContainer = document.getElementById('thank-you-container');
 
-        // Update hidden inputs for Google Sheet
-        let fullProductName = "";
-        if(size === 'Small') fullProductName = "Small (40CM x 20CM)";
-        if(size === 'Medium') fullProductName = "Medium (80CM x 40CM)";
-        if(size === 'Big') fullProductName = "Big (120CM x 60CM)";
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // Extract Details
+            const selectedRadio = document.querySelector('input[name="product_selection"]:checked').value;
+            const [productName, productPrice] = selectedRadio.split('|');
+            document.getElementById('product').value = productName;
+            document.getElementById('price').value = productPrice;
 
-        document.getElementById('product_input').value = fullProductName;
-        document.getElementById('price_input').value = price;
-    }
+            // Combine Data for App Script
+            const phone1 = document.getElementById('raw_phone1').value;
+            const phone2 = document.getElementById('raw_phone2').value;
+            document.getElementById('combined_phone').value = phone2 ? `${phone1} / ${phone2}` : phone1;
 
-    // 3. Google Sheets Form Submission Logic
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec';
-    const form = document.forms['submit-to-google-sheet'];
-    const submitBtn = document.getElementById('submitBtn');
-    const successMsg = document.getElementById('success-message');
+            const commune = document.getElementById('raw_commune').value;
+            const wilaya = document.getElementById('raw_wilaya').value;
+            document.getElementById('combined_address').value = `بلدية: ${commune}`;
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        
-        // Change button state
-        const originalBtnText = submitBtn.innerText;
-        submitBtn.innerText = 'جاري إرسال الطلبية... ⏳';
-        submitBtn.disabled = true;
+            const customerName = document.getElementById('raw_name').value;
 
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                form.style.display = 'none';
-                successMsg.style.display = 'block';
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert('حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.');
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
-            });
-    });
-</script>
+            // Loading UI
+            btnText.innerText = 'جاري تسجيل الطلب...';
+            btnIcon.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('hover:opacity-90');
+            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
 
+            // Send to Google Sheets
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    // Build WhatsApp URL
+                    const waNumber = "213672975420";
+                    const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم: ${customerName}\n📱 الهاتف: ${phone1}\n📍 الولاية: ${wilaya}\n🏠 البلدية: ${commune}\n📦 العرض: ${productName}\n💰 السعر: ${productPrice} دج\n\nأنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
+                    
+                    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+                    
+                    // Setup Thank You Screen
+                    document.getElementById('display-client-name').innerText = customerName;
+                    document.getElementById('wa-confirm-btn').href = waUrl;
+                    
+                    // Switch UI
+                    checkoutContainer.classList.add('hidden');
+                    thankYouContainer.classList.remove('hidden');
+                    
+                    // Scroll to Thank you msg smoothly
+                    thankYouContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('حدث خطأ خفيف في الشبكة. حاول مرة أخرى أو تواصل معنا مباشرة عبر الواتساب.');
+                    // Reset UI
+                    btnText.innerText = 'أرسل طلبي الآن';
+                    btnIcon.classList.remove('hidden');
+                    btnLoader.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.classList.add('hover:opacity-90');
+                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                });
+        });
+    </script>
 </body>
 </html>
-
-```
