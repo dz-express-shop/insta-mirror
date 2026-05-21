@@ -449,42 +449,32 @@
         let ghostSent = false;
         const phoneInput = document.getElementById('raw_phone1');
         
-       // --- 4. ADVANCED EXIT INTENT (ONLY GHOST IF NO SUBMIT) ---
-let formSubmitted = false; // فلاج باش نعرفو بلي الزبون كليكا أرسل
+        phoneInput.addEventListener('blur', () => {
+            if(phoneInput.value.length >= 9 && !ghostSent) {
+                ghostSent = true; 
+                const currentName = document.getElementById('raw_name').value || 'مجهول';
+                const currentWilaya = document.getElementById('raw_wilaya').value || '';
+                const currentCommune = document.getElementById('raw_commune').value || '';
+                const selectedRadio = document.querySelector('input[name="product_selection"]:checked');
+                const [productName, productPrice] = selectedRadio ? selectedRadio.value.split('|') : ['Unknown', '0'];
+                const businessName = document.getElementById('ig-input').value || '';
+                
+                const fd = new FormData();
+                fd.append('name', currentName);
+                fd.append('phone', phoneInput.value);
+                fd.append('wilaya', currentWilaya);
+                fd.append('address', currentCommune ? `بلدية: ${currentCommune}` : '');
+                fd.append('product', '[سلة متروكة] ' + productName);
+                fd.append('price', productPrice);
+                fd.append('business_name', businessName);
+                fd.append('remarque', '');
 
-// هادا يخدم فقط كي الزبون يحاول يغلق الصفحة قبل ما يدير Submit
-window.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden' && !formSubmitted) {
-        const phone = document.getElementById('raw_phone1').value;
-        const name = document.getElementById('raw_name').value;
-        
-        // يبعث فقط إذا كان كاين على الأقل اسم ولا تليفون
-        if (phone.length >= 4 || name.length > 0) {
-            const fd = new FormData();
-            const selectedRadio = document.querySelector('input[name="product_selection"]:checked');
-            const [productName, productPrice] = selectedRadio ? selectedRadio.value.split('|') : ['Unknown', '0'];
-            
-            fd.append('name', name || 'مجهول');
-            fd.append('phone', phone || 'بدون تليفون');
-            fd.append('wilaya', document.getElementById('raw_wilaya').value || '');
-            fd.append('address', document.getElementById('raw_commune').value || '');
-            fd.append('product', '[سلة متروكة] ' + productName);
-            fd.append('price', productPrice);
-            fd.append('business_name', document.getElementById('ig-input').value || '');
-            fd.append('remarque', '');
+                fetch(scriptURL, { method: 'POST', body: fd }).catch(e => console.log('Ghost saved'));
+            }
+        });
 
-            // إرسال صامت
-            navigator.sendBeacon(scriptURL, fd);
-        }
-    }
-});
-
-// --- 5. FORM SUBMISSION (THE MAIN ONE) ---
-const form = document.getElementById('checkout-form');
-form.addEventListener('submit', e => {
-    formSubmitted = true; // هنا نقولو بلي خلاص، راه كليكا Submit، ما تزيدش تخدم الـ Exit Intent
-    e.preventDefault();
-      const form = document.getElementById('checkout-form');
+        // 6. FORM SUBMISSION (PIXELS + WHATSAPP + SHEETS)
+        const form = document.getElementById('checkout-form');
         const submitBtn = document.getElementById('submit-btn');
         const btnText = document.getElementById('btn-text');
         const btnIcon = document.getElementById('btn-icon');
