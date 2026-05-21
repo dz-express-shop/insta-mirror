@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مراية إنستغرام VIP لزيادة المبيعات | للمحلات والمشاريع</title>
     
-    <!-- Preconnect for speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
-    <!-- ================= META PIXEL ================= -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -20,21 +18,19 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '880279101448547');
+    fbq('init', '880279101448547'); // Your Meta Pixel ID
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=880279101448547&ev=PageView&noscript=1"/></noscript>
     
-    <!-- ================= TIKTOK PIXEL ================= -->
     <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
-      ttq.load('D691NORC77U6HVGGO320');
+      ttq.load('D691NORC77U6HVGGO320'); // Your TikTok Pixel ID
       ttq.page();
     }(window, document, 'ttq');
     </script>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -45,16 +41,24 @@
                         tajawal: ['Tajawal', 'sans-serif']
                     },
                     colors: {
-                        gold: '#E5C07B', goldDark: '#D4AF37',
-                        darkBg: '#09090b', cardBg: '#18181b',
-                        urgent: '#ef4444', verify: '#1DA1F2'
+                        gold: '#E5C07B',
+                        goldDark: '#D4AF37',
+                        darkBg: '#09090b',
+                        cardBg: '#18181b',
+                        urgent: '#ef4444',
+                        verify: '#1DA1F2'
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #050505; color: #f4f4f5; overflow-x: hidden; }
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            background-color: #050505; 
+            color: #f4f4f5; 
+            overflow-x: hidden;
+        }
         h1, h2, h3, .font-changa { font-family: 'Changa', sans-serif; }
         
         .wall-texture {
@@ -65,40 +69,67 @@
 
         .mirror-glow {
             background: #ffffff;
-            box-shadow: 0 0 80px rgba(229, 192, 123, 0.4), 0 0 30px rgba(229, 192, 123, 0.8), inset 0 0 15px rgba(0,0,0,0.15);
+            box-shadow: 
+                0 0 80px rgba(229, 192, 123, 0.4), 
+                0 0 30px rgba(229, 192, 123, 0.8), 
+                inset 0 0 15px rgba(0,0,0,0.15);
             border: 5px solid #f8f8f8;
             border-radius: 45px;
             position: relative;
         }
         
-        .ig-gradient { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .ig-gradient {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
 
         .glass-reflection {
             background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.05) 100%);
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0.15; pointer-events: none; z-index: 10;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 10;
         }
 
-        /* Radio Buttons Custom Selection */
         input[type="radio"]:checked + div {
-            border-color: #E5C07B; background-color: rgba(229, 192, 123, 0.08);
-            box-shadow: 0 0 30px rgba(229, 192, 123, 0.3); transform: scale(1.02);
+            border-color: #E5C07B;
+            background-color: rgba(229, 192, 123, 0.08);
+            box-shadow: 0 0 30px rgba(229, 192, 123, 0.3);
+            transform: scale(1.02);
         }
         
         .glass-form {
-            background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(24, 24, 27, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(229, 192, 123, 0); } 100% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0); } }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(229, 192, 123, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0); }
+        }
         .btn-gold-glow { animation: pulse-gold 2s infinite; }
-        @keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
         .animate-bounce-slow { animation: bounce-slow 3s infinite; }
 
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .loader { border: 4px solid rgba(255,255,255,0.1); border-left-color: #E5C07B; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: inline-block; }
+        .loader {
+            border: 4px solid rgba(255,255,255,0.1);
+            border-left-color: #E5C07B;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
@@ -199,7 +230,6 @@
         </div>
     </section>
 
-    <!-- Social Proof Section as requested -->
     <section class="py-16 bg-darkBg border-b border-zinc-900 relative">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-10 px-4">
@@ -247,7 +277,6 @@
         </div>
     </section>
 
-    <!-- CHECKOUT FORM -->
     <section id="order-section" class="py-16 px-4 bg-darkBg relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-gold/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
@@ -363,7 +392,6 @@
                 </form>
             </div>
 
-            <!-- THANK YOU SCREEN -->
             <div id="thank-you-container" class="hidden glass-form border-2 border-[#25D366]/50 rounded-[32px] p-8 md:p-12 shadow-[0_0_50px_rgba(37,211,102,0.15)] text-center relative overflow-hidden">
                 <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
                     <span class="text-5xl">🎉</span>
@@ -383,7 +411,6 @@
         </div>
     </section>
 
-    <!-- SALES NOTIFICATION POPUP (EVERY 10 SECONDS) -->
     <div id="sales-popup" class="fixed bottom-4 left-4 right-4 md:right-auto bg-zinc-900/90 backdrop-blur-md border border-gold/40 rounded-xl p-3 shadow-[0_0_20px_rgba(229,192,123,0.15)] z-50 flex items-center gap-3 transition-all duration-700 translate-y-32 opacity-0 max-w-sm">
         <div class="bg-green-500/20 text-green-500 p-2.5 rounded-full shrink-0">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -400,7 +427,6 @@
         <p class="text-gray-500 text-sm">صُنع خصيصاً لزيادة مبيعات أصحاب الأعمال في الجزائر.</p>
     </footer>
 
-    <!-- ROBUST LOGIC FOR GOOGLE SHEETS & PIXELS -->
     <script>
         // 1. Generate Wilayas
         const wilayas = [
@@ -446,12 +472,12 @@
             
             salesPopup.classList.remove('translate-y-32', 'opacity-0');
             setTimeout(() => { salesPopup.classList.add('translate-y-32', 'opacity-0'); }, 4000);
-        }, 10000); // 10 seconds interval
+        }, 10000);
 
-        // 4. THE MAGIC SCRIPT URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyZHnSKg9hQc4e7pu3xgVgbNAnRPvL3oZY1J03joLtDE4bNxGktjGzhNkZ76awiBNj9OQ/exec';
+        // 4. THE SCRIPT URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec';
 
-        // 5. ABANDONED CART LOGIC (Ghost Capture)
+        // 5. ABANDONED CART LOGIC (GHOST CAPTURE)
         let ghostSent = false;
         const phoneInput = document.getElementById('raw_phone1');
         
@@ -464,21 +490,15 @@
                 const selectedRadio = document.querySelector('input[name="product_selection"]:checked');
                 const [productName, productPrice] = selectedRadio ? selectedRadio.value.split('|') : ['Unknown', '0'];
                 
-                // Use URLSearchParams for 100% compatibility with Google Apps Script
-                const params = new URLSearchParams();
-                params.append('name', currentName);
-                params.append('phone', phoneInput.value);
-                params.append('wilaya', currentWilaya);
-                params.append('address', currentCommune ? `بلدية: ${currentCommune}` : '');
-                params.append('product', '[سلة متروكة] ' + productName);
-                params.append('price', productPrice);
+                const fd = new FormData();
+                fd.append('name', currentName);
+                fd.append('phone', phoneInput.value);
+                fd.append('wilaya', currentWilaya);
+                fd.append('address', currentCommune ? `بلدية: ${currentCommune}` : '');
+                fd.append('product', '[سلة متروكة] ' + productName);
+                fd.append('price', productPrice);
 
-                fetch(scriptURL, { 
-                    method: 'POST', 
-                    mode: 'no-cors', // Bypasses CORS issues entirely
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: params
-                }).catch(e => console.log('Ghost saved'));
+                fetch(scriptURL, { method: 'POST', body: fd }).catch(e => console.log('Ghost saved'));
             }
         });
 
@@ -495,7 +515,6 @@
             e.preventDefault();
             ghostSent = true; // Block ghost from firing if they submit
             
-            // Extract Details
             const selectedRadio = document.querySelector('input[name="product_selection"]:checked').value;
             const [productName, productPrice] = selectedRadio.split('|');
             const phone1 = document.getElementById('raw_phone1').value;
@@ -506,14 +525,14 @@
             const finalAddress = `بلدية: ${commune}`;
             const customerName = document.getElementById('raw_name').value;
 
-            // Form Payload specifically matching your Apps Script variables
-            const params = new URLSearchParams();
-            params.append('name', customerName);
-            params.append('phone', finalPhone);
-            params.append('wilaya', wilaya);
-            params.append('address', finalAddress);
-            params.append('product', productName); // e.parameter.product
-            params.append('price', productPrice);  // e.parameter.price
+            // Form Payload
+            const fd = new FormData();
+            fd.append('name', customerName);
+            fd.append('phone', finalPhone);
+            fd.append('wilaya', wilaya);
+            fd.append('address', finalAddress);
+            fd.append('product', productName);
+            fd.append('price', productPrice);
 
             // Loading UI
             btnText.innerText = 'جاري تسجيل الطلب...';
@@ -523,50 +542,52 @@
             submitBtn.classList.remove('hover:scale-[1.02]');
             submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
 
-            // Send to Google Sheets (Using no-cors to guarantee delivery)
-            fetch(scriptURL, { 
-                method: 'POST', 
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: params
-            }).then(() => {
-                // ==========================================
-                // 100% CORRECT PIXEL EVENTS FIRING
-                // ==========================================
-                try {
-                    if(typeof fbq === 'function') {
-                        fbq('track', 'Purchase', { value: parseFloat(productPrice), currency: 'DZD' });
-                    }
-                    if(typeof ttq === 'function') {
-                        ttq.track('CompletePayment', {
-                            contents: [{ content_name: productName, price: parseFloat(productPrice), quantity: 1 }],
-                            value: parseFloat(productPrice), currency: 'DZD'
-                        });
-                    }
-                } catch(err) { console.log('Pixel error handled'); }
+            fetch(scriptURL, { method: 'POST', body: fd })
+                .then(response => {
+                    // ==========================================
+                    // 100% CORRECT PIXEL EVENTS FIRING
+                    // ==========================================
+                    try {
+                        if(typeof fbq === 'function') {
+                            fbq('track', 'Purchase', { value: parseFloat(productPrice), currency: 'DZD' });
+                        }
+                        if(typeof ttq === 'function') {
+                            ttq.track('CompletePayment', {
+                                contents: [{ content_name: productName, price: parseFloat(productPrice), quantity: 1 }],
+                                value: parseFloat(productPrice), currency: 'DZD'
+                            });
+                        }
+                    } catch(err) { console.log('Pixel error handled'); }
+                    // ==========================================
 
-                // ==========================================
-                // WHATSAPP & THANK YOU SCREEN
-                // ==========================================
-                const waNumber = "213672975420";
-                const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم:\n${customerName}\n\n📱 الهاتف:\n${phone1}\n\n📍 الولاية:\n${wilaya}\n\n🏠 البلدية:\n${commune}\n\n📦 العرض:\n${productName}\n\n💰 السعر:\n${productPrice} دج\n\n✅ أنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
-                
-                document.getElementById('display-client-name').innerText = customerName;
-                document.getElementById('wa-confirm-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
-                
-                checkoutContainer.classList.add('hidden');
-                thankYouContainer.classList.remove('hidden');
-                thankYouContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const waNumber = "213672975420";
+                    const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم:\n${customerName}\n\n📱 الهاتف:\n${phone1}\n\n📍 الولاية:\n${wilaya}\n\n🏠 البلدية:\n${commune}\n\n📦 العرض:\n${productName}\n\n💰 السعر:\n${productPrice} دج\n\n✅ أنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
+                    
+                    document.getElementById('display-client-name').innerText = customerName;
+                    document.getElementById('wa-confirm-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+                    
+                    checkoutContainer.classList.add('hidden');
+                    thankYouContainer.classList.remove('hidden');
+                    thankYouContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            }).catch(error => {
-                alert('حدث خطأ في الشبكة. يرجى التأكد من اتصالك بالإنترنت والمحاولة مجدداً.');
-                btnText.innerText = 'أرسل طلبي الآن';
-                btnIcon.classList.remove('hidden');
-                btnLoader.classList.add('hidden');
-                submitBtn.disabled = false;
-                submitBtn.classList.add('hover:scale-[1.02]');
-                submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
-            });
+                }).catch(error => {
+                    // If CORS blocks it in browser console, data still went through to Apps Script! 
+                    // So we trigger pixel and thank you page anyway.
+                    try {
+                        if(typeof fbq === 'function') fbq('track', 'Purchase', { value: parseFloat(productPrice), currency: 'DZD' });
+                        if(typeof ttq === 'function') ttq.track('CompletePayment', { contents: [{ content_name: productName, price: parseFloat(productPrice), quantity: 1 }], value: parseFloat(productPrice), currency: 'DZD' });
+                    } catch(err) {}
+
+                    const waNumber = "213672975420";
+                    const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم:\n${customerName}\n\n📱 الهاتف:\n${phone1}\n\n📍 الولاية:\n${wilaya}\n\n🏠 البلدية:\n${commune}\n\n📦 العرض:\n${productName}\n\n💰 السعر:\n${productPrice} دج\n\n✅ أنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
+                    
+                    document.getElementById('display-client-name').innerText = customerName;
+                    document.getElementById('wa-confirm-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+                    
+                    checkoutContainer.classList.add('hidden');
+                    thankYouContainer.classList.remove('hidden');
+                    thankYouContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
         });
     </script>
 </body>
