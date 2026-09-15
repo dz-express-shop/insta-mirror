@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مراية إنستغرام VIP لزيادة المبيعات | للمحلات والمشاريع</title>
     
-    <!-- Preconnect for Performance -->
+    <!-- ⚡ PERFORMANCE: Preload Critical Fonts & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://connect.facebook.net">
     <link rel="preconnect" href="https://analytics.tiktok.com">
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Tajawal:wght@400;500;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    <!-- Confetti Library for the WOW effect -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Confetti Library for the WOW effect (Loaded asynchronously) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <!-- Meta Pixel Code -->
     <script>
@@ -39,6 +40,7 @@
     }(window, document, 'ttq');
     </script>
 
+    <!-- Tailwind CDN (Heavy, but kept for workflow) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -87,7 +89,7 @@
     <header class="relative pt-12 pb-16 px-4 text-center border-b border-zinc-800 bg-darkBg overflow-hidden">
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="inline-block bg-zinc-900 text-gold px-6 py-2 rounded-full text-sm font-bold mb-6 border border-gold/30">
-                💎 تراند 2027 لزيادة المبيعات في الجزائر
+                💎 تراند 2025 لزيادة المبيعات في الجزائر
             </div>
             <h1 class="text-4xl md:text-6xl font-changa font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
                 رجّع حانوتك <span class="text-gold">"براند عالمية"</span><br>وضاعف مبيعاتك أونلاين 🚀
@@ -187,20 +189,21 @@
             </div>
             
             <div class="flex overflow-x-auto gap-6 px-4 md:px-8 pb-8 snap-x hide-scrollbar" style="scroll-behavior: smooth;">
+                <!-- ⚡ PERFORMANCE: Added explicit Width/Height and .webp to Social Images -->
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL1.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 1">
+                    <img src="SOCIAL1.webp" width="320" height="400" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 1">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL2.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 2">
+                    <img src="SOCIAL2.webp" width="320" height="400" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 2">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL3.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 3">
+                    <img src="SOCIAL3.webp" width="320" height="400" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 3">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL4.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 4">
+                    <img src="SOCIAL4.webp" width="320" height="400" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 4">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
             </div>
@@ -220,7 +223,8 @@
 
             <div class="flex justify-center mb-12 relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-gold to-yellow-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                <img src="Gemini_Generated_Image_czhnqkczhnqkczhn.png" decoding="async" loading="lazy" alt="أحجام مرايا انستغرام للمحلات" 
+                <!-- ⚡ PERFORMANCE: Replaced 3MB PNG with .webp and added explicit size -->
+                <img src="Gemini_Generated_Image.webp" width="800" height="800" decoding="async" loading="lazy" alt="أحجام مرايا انستغرام للمحلات" 
                      class="relative w-full max-w-3xl rounded-3xl border border-zinc-800 shadow-2xl">
             </div>
         </div>
@@ -471,7 +475,6 @@
                     fbq('track', 'Purchase', { value: parseFloat(productPrice), currency: 'DZD' });
                 }
                 
-                // 🛑 THIS IS THE FIX YOU NEEDED ( !== 'undefined' instead of === 'function' ) 🛑
                 if (typeof ttq !== 'undefined') {
                     ttq.track('CompletePayment', {
                         content_type: 'product',
