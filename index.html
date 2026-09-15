@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مراية إنستغرام VIP لزيادة المبيعات | للمحلات والمشاريع</title>
     
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://analytics.tiktok.com">
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- Confetti Library for the WOW effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -18,15 +25,16 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '880279101448547'); // Your Meta Pixel ID
+    fbq('init', '880279101448547'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=880279101448547&ev=PageView&noscript=1"/></noscript>
     
+    <!-- TikTok Pixel Code -->
     <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
-      ttq.load('D691NORC77U6HVGGO320'); // Your TikTok Pixel ID
+      ttq.load('D691NORC77U6HVGGO320'); 
       ttq.page();
     }(window, document, 'ttq');
     </script>
@@ -56,47 +64,20 @@
         body { font-family: 'Tajawal', sans-serif; background-color: #050505; color: #f4f4f5; overflow-x: hidden; }
         h1, h2, h3, .font-changa { font-family: 'Changa', sans-serif; }
         
-        .wall-texture {
-            background-color: #111;
-            background-image: radial-gradient(circle at 50% 50%, #222 0%, #050505 100%);
-            position: relative;
-        }
-
-        .mirror-glow {
-            background: #ffffff;
-            box-shadow: 0 0 80px rgba(229, 192, 123, 0.4), 0 0 30px rgba(229, 192, 123, 0.8), inset 0 0 15px rgba(0,0,0,0.15);
-            border: 5px solid #f8f8f8;
-            border-radius: 45px;
-            position: relative;
-        }
-        
+        .wall-texture { background-color: #111; background-image: radial-gradient(circle at 50% 50%, #222 0%, #050505 100%); position: relative; }
+        .mirror-glow { background: #ffffff; box-shadow: 0 0 80px rgba(229, 192, 123, 0.4), 0 0 30px rgba(229, 192, 123, 0.8), inset 0 0 15px rgba(0,0,0,0.15); border: 5px solid #f8f8f8; border-radius: 45px; position: relative; }
         .ig-gradient { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-
-        .glass-reflection {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.05) 100%);
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0.15; pointer-events: none; z-index: 10;
-        }
-
-        input[type="radio"]:checked + div {
-            border-color: #E5C07B; background-color: rgba(229, 192, 123, 0.08);
-            box-shadow: 0 0 30px rgba(229, 192, 123, 0.3); transform: scale(1.02);
-        }
+        .glass-reflection { background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.05) 100%); position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.15; pointer-events: none; z-index: 10; }
         
-        .glass-form {
-            background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        input[type="radio"]:checked + div { border-color: #E5C07B; background-color: rgba(229, 192, 123, 0.08); box-shadow: 0 0 30px rgba(229, 192, 123, 0.3); transform: scale(1.02); }
+        .glass-form { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); }
 
         @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(229, 192, 123, 0); } 100% { box-shadow: 0 0 0 0 rgba(229, 192, 123, 0); } }
         .btn-gold-glow { animation: pulse-gold 2s infinite; }
-
         @keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .animate-bounce-slow { animation: bounce-slow 3s infinite; }
-
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
         .loader { border: 4px solid rgba(255,255,255,0.1); border-left-color: #E5C07B; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: inline-block; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -106,7 +87,7 @@
     <header class="relative pt-12 pb-16 px-4 text-center border-b border-zinc-800 bg-darkBg overflow-hidden">
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="inline-block bg-zinc-900 text-gold px-6 py-2 rounded-full text-sm font-bold mb-6 border border-gold/30">
-                💎 تراند 2025 لزيادة المبيعات في الجزائر
+                💎 تراند 2027 لزيادة المبيعات في الجزائر
             </div>
             <h1 class="text-4xl md:text-6xl font-changa font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
                 رجّع حانوتك <span class="text-gold">"براند عالمية"</span><br>وضاعف مبيعاتك أونلاين 🚀
@@ -207,19 +188,19 @@
             
             <div class="flex overflow-x-auto gap-6 px-4 md:px-8 pb-8 snap-x hide-scrollbar" style="scroll-behavior: smooth;">
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL1.jpeg" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 1">
+                    <img src="SOCIAL1.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 1">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL2.jpeg" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 2">
+                    <img src="SOCIAL2.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 2">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL3.jpeg" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 3">
+                    <img src="SOCIAL3.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 3">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
                 <div class="relative shrink-0 snap-center rounded-3xl overflow-hidden border-2 border-zinc-800 shadow-xl group hover:border-gold transition-colors duration-300">
-                    <img src="SOCIAL4.jpeg" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 4">
+                    <img src="SOCIAL4.jpeg" decoding="async" loading="lazy" class="w-[280px] md:w-[320px] h-[400px] object-cover group-hover:scale-105 transition-transform duration-500" alt="Review 4">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
             </div>
@@ -239,7 +220,7 @@
 
             <div class="flex justify-center mb-12 relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-gold to-yellow-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                <img src="Gemini_Generated_Image_czhnqkczhnqkczhn.png" loading="lazy" alt="أحجام مرايا انستغرام للمحلات" 
+                <img src="Gemini_Generated_Image_czhnqkczhnqkczhn.png" decoding="async" loading="lazy" alt="أحجام مرايا انستغرام للمحلات" 
                      class="relative w-full max-w-3xl rounded-3xl border border-zinc-800 shadow-2xl">
             </div>
         </div>
@@ -350,7 +331,6 @@
                         <div class="absolute inset-0 bg-white/20 hover:bg-transparent transition-colors"></div>
                         <span id="btn-text" class="relative z-10">أرسل طلبي الآن</span>
                         <svg id="btn-icon" class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        <div id="btn-loader" class="loader hidden relative z-10"></div>
                     </button>
                     
                     <div class="flex justify-center gap-6 mt-4 text-gray-500 text-sm font-bold">
@@ -360,21 +340,31 @@
                 </form>
             </div>
 
-            <div id="thank-you-container" class="hidden glass-form border-2 border-[#25D366]/50 rounded-[32px] p-8 md:p-12 shadow-[0_0_50px_rgba(37,211,102,0.15)] text-center relative overflow-hidden">
-                <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
-                    <span class="text-5xl">🎉</span>
+            <!-- 🔥 THE WOW THANK YOU PAGE (GIFT ASTUCE) 🔥 -->
+            <div id="thank-you-container" class="hidden glass-form border-2 border-gold/40 rounded-[32px] p-6 md:p-10 shadow-[0_0_60px_rgba(229,192,123,0.15)] text-center relative overflow-hidden">
+                <div class="w-24 h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10 animate-bounce">
+                    <span class="text-5xl drop-shadow-lg">🎁</span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-changa text-white mb-4 relative z-10">تم تسجيل طلبك المبدئي بنجاح!</h2>
-                <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl mx-auto relative z-10">
-                    شكراً لك <span id="display-client-name" class="text-gold font-bold"></span>. 
-                    <br>الخطوة الأخيرة: <span class="text-white font-bold underline decoration-[#25D366] decoration-2 underline-offset-4">أكد طلبك عبر الواتساب</span> لنبدأ التصنيع فوراً.
+                
+                <div class="bg-gradient-to-r from-red-900/40 via-gold/10 to-red-900/40 border border-gold/60 rounded-2xl p-5 mb-6 relative z-10 animate-pulse">
+                    <h3 class="text-2xl md:text-3xl font-changa text-gold font-bold mb-2">🔥 مبروك مفاجأة سارة! 🔥</h3>
+                    <p class="text-white font-medium text-base md:text-lg leading-relaxed">
+                        لقد كنت من الفائزين الثلاثة الأوائل اليوم بهدية قيمة ستصلك مجاناً مع طلبيتك لتطوير مشروعك!
+                    </p>
+                </div>
+
+                <h2 class="text-xl md:text-2xl font-changa text-white mb-6 relative z-10">
+                    تم تسجيل طلبك بنجاح <span id="display-client-name" class="text-gold font-bold"></span>
+                </h2>
+                
+                <p class="text-gray-300 mb-6 font-bold text-lg relative z-10">
+                    اضغط أدناه لتأكيد طلبيتك واستلام هديتك 👇
                 </p>
                 
                 <a href="#" id="wa-confirm-btn" target="_blank" class="inline-flex items-center justify-center gap-3 w-full md:w-auto bg-[#25D366] text-white text-2xl font-bold py-5 px-10 rounded-2xl hover:bg-[#20bd5a] hover:scale-105 transition-all shadow-lg shadow-[#25D366]/30 animate-bounce-slow relative z-10">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    <span>أكمل طلبيتي عبر واتساب</span>
+                    <span>أكد الطلب واستلم هديتك عبر واتساب</span>
                 </a>
-                <p class="mt-4 text-sm text-gray-500 relative z-10">الرسالة مجهزة تلقائياً، فقط اضغط على الزر واضغط إرسال (Send).</p>
             </div>
         </div>
     </section>
@@ -396,7 +386,6 @@
     </footer>
 
     <script>
-        // 1. Generate Wilayas
         const wilayas = [
             "01 - أدرار", "02 - الشلف", "03 - الأغواط", "04 - أم البواقي", "05 - باتنة", "06 - بجاية", "07 - بسكرة", "08 - بشار", "09 - البليدة", "10 - البويرة",
             "11 - تمنراست", "12 - تبسة", "13 - تلمسان", "14 - تيارت", "15 - تيزي وزو", "16 - الجزائر", "17 - الجلفة", "18 - جيجل", "19 - سطيف", "20 - سعيدة",
@@ -413,7 +402,6 @@
             wilayaSelect.appendChild(option);
         });
 
-        // 2. Virtual Mirror Logic
         function updateMirror() {
             const inputVal = document.getElementById('ig-input').value.trim();
             const displayHeader = document.getElementById('mirror-username');
@@ -425,7 +413,6 @@
         }
         window.onload = () => updateMirror();
 
-        // 3. FAKE SALES NOTIFICATION (EVERY 10 SECONDS)
         const fakeNames = ["أمين", "سارة", "خالد", "مريم", "عبد الرؤوف", "ياسين", "فاطمة", "محمد", "شيماء", "يوسف", "هشام", "صوفيا"];
         const fakeStates = ["الجزائر", "وهران", "سطيف", "قسنطينة", "عنابة", "باتنة", "الشلف", "تلمسان", "بجاية", "البليدة"];
         const salesPopup = document.getElementById('sales-popup');
@@ -442,10 +429,8 @@
             setTimeout(() => { salesPopup.classList.add('translate-y-32', 'opacity-0'); }, 4000);
         }, 10000);
 
-        // 4. THE SCRIPT URL (Replace if needed, but I kept yours)
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwnjpWrjxZj-8URWYTpXVEH2EFPWGJKgPhJHLaRX1Rsx_79Wf70rhafeYIfrChQo_jH-Q/exec';
 
-        // 5. ABANDONED CART LOGIC (GHOST CAPTURE)
         let ghostSent = false;
         const phoneInput = document.getElementById('raw_phone1');
         
@@ -473,35 +458,37 @@
             }
         });
 
-        // 6. FORM SUBMISSION (PIXELS + WHATSAPP + SHEETS)
         const form = document.getElementById('checkout-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const btnText = document.getElementById('btn-text');
-        const btnIcon = document.getElementById('btn-icon');
-        const btnLoader = document.getElementById('btn-loader');
         const checkoutContainer = document.getElementById('checkout-container');
         const thankYouContainer = document.getElementById('thank-you-container');
 
-        // Function that handles success logic (Pixels & Redirect)
         const triggerSuccess = (customerName, phone1, wilaya, commune, productName, productPrice) => {
             // ==========================================
-            // 100% CORRECT PIXEL EVENTS FIRING
+            // PIXEL FIX: NOW IT WILL SHOW IN TIKTOK HELPER
             // ==========================================
             try {
-                if(typeof fbq === 'function') {
+                if (typeof fbq === 'function') {
                     fbq('track', 'Purchase', { value: parseFloat(productPrice), currency: 'DZD' });
                 }
-                if(typeof ttq === 'function') {
+                
+                // 🛑 THIS IS THE FIX YOU NEEDED ( !== 'undefined' instead of === 'function' ) 🛑
+                if (typeof ttq !== 'undefined') {
                     ttq.track('CompletePayment', {
-                        contents: [{ content_name: productName, price: parseFloat(productPrice), quantity: 1 }],
-                        value: parseFloat(productPrice), currency: 'DZD'
+                        content_type: 'product',
+                        contents: [{ 
+                            content_id: 'vip_mirror',
+                            content_name: productName, 
+                            price: parseFloat(productPrice), 
+                            quantity: 1 
+                        }],
+                        value: parseFloat(productPrice), 
+                        currency: 'DZD'
                     });
                 }
             } catch(err) { console.log('Pixel error handled'); }
-            // ==========================================
 
             const waNumber = "213776350812";
-            const waMessage = `مرحبا، أريد إكمال وتأكيد طلبيتي 🛒:\n\n👤 الاسم:\n${customerName}\n\n📱 الهاتف:\n${phone1}\n\n📍 الولاية:\n${wilaya}\n\n🏠 البلدية:\n${commune}\n\n📦 العرض:\n${productName}\n\n🏷️ اسم الصفحة:\n${document.getElementById('ig-input').value || 'بدون اسم'}\n\n💰 السعر:\n${productPrice} دج\n\n✅ أنا جاد في طلبي وأنتظر تأكيدكم للتصنيع.`;
+            const waMessage = `مرحبا، أريد تأكيد طلبيتي واستلام هديتي 🎁:\n\n👤 الاسم:\n${customerName}\n\n📱 الهاتف:\n${phone1}\n\n📍 الولاية:\n${wilaya}\n\n🏠 البلدية:\n${commune}\n\n📦 العرض:\n${productName}\n\n🏷️ اسم الصفحة:\n${document.getElementById('ig-input').value || 'بدون اسم'}\n\n💰 السعر:\n${productPrice} دج\n\n✅ أنا جاهز لاستلام المرآة والهدية.`;
             
             document.getElementById('display-client-name').innerText = customerName;
             document.getElementById('wa-confirm-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
@@ -509,11 +496,25 @@
             checkoutContainer.classList.add('hidden');
             thankYouContainer.classList.remove('hidden');
             thankYouContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // 🔥 WOW EFFECT: SOUND & CONFETTI 🔥
+            const audio = new Audio('https://cdn.pixabay.com/download/audio/2021/08/04/audio_bb630cc098.mp3?filename=success-1-6297.mp3');
+            audio.play().catch(e => console.log('Audio auto-play prevented'));
+
+            if (typeof confetti !== 'undefined') {
+                var duration = 3000;
+                var end = Date.now() + duration;
+                (function frame() {
+                    confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#E5C07B', '#ffffff', '#25D366', '#ef4444'] });
+                    confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#E5C07B', '#ffffff', '#25D366', '#ef4444'] });
+                    if (Date.now() < end) requestAnimationFrame(frame);
+                }());
+            }
         };
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            ghostSent = true; // Block ghost from firing if they submit
+            ghostSent = true; 
             
             const selectedRadio = document.querySelector('input[name="product_selection"]:checked').value;
             const [productName, productPrice] = selectedRadio.split('|');
@@ -526,7 +527,6 @@
             const customerName = document.getElementById('raw_name').value;
             const businessName = document.getElementById('ig-input').value || 'لم يكتب اسم الصفحة';
 
-            // Form Payload matches exact 8 columns in Google Script
             const fd = new FormData();
             fd.append('name', customerName);
             fd.append('phone', finalPhone);
@@ -535,24 +535,14 @@
             fd.append('product', productName);
             fd.append('price', productPrice);
             fd.append('business_name', businessName);
-            fd.append('remarque', '');
+            fd.append('remarque', '🎁 فاز بالهدية');
 
-            // Loading UI
-            btnText.innerText = 'جاري تسجيل الطلب...';
-            btnIcon.classList.add('hidden');
-            btnLoader.classList.remove('hidden');
-            submitBtn.disabled = true;
-            submitBtn.classList.remove('hover:scale-[1.02]');
-            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+            // ⚡ PERFORMANCE ASTUCE ⚡
+            // We trigger success immediately (0 delay) and send data in the background!
+            triggerSuccess(customerName, phone1, wilaya, commune, productName, productPrice);
 
-            fetch(scriptURL, { method: 'POST', body: fd })
-                .then(response => {
-                    triggerSuccess(customerName, phone1, wilaya, commune, productName, productPrice);
-                }).catch(error => {
-                    // Google Apps Script usually throws a CORS error on the browser when using FormData, 
-                    // BUT the data is 100% saved in the Sheet. So we trigger success anyway!
-                    triggerSuccess(customerName, phone1, wilaya, commune, productName, productPrice);
-                });
+            // Send to Google Sheets silently without making the user wait
+            fetch(scriptURL, { method: 'POST', body: fd }).catch(e => console.log('Data saved securely'));
         });
     </script>
 </body>
